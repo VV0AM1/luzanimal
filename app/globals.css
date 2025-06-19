@@ -1,5 +1,7 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@600&display=swap');
 
+@tailwind utilities;
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -19,8 +21,62 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Lora', serif;
 }
+
+.hero-title::after{
+    position: absolute;
+    content: '';
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(0, 112, 210, 0.837);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600; 
+  margin-top: 0;
+}
+
+ @keyframes floatSlow {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-12px);
+          }
+        }
+        @keyframes floatSlower {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
+        }
+        .animate-float-slow {
+          animation: floatSlow 6s ease-in-out infinite;
+        }
+        .animate-float-slower {
+          animation: floatSlower 8s ease-in-out infinite;
+        }
+        .animate-pulse-on-hover:hover {
+          animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+          0%, 100% {
+            box-shadow: 0 0 8px 2px rgba(59, 130, 246, 0.6);
+          }
+          50% {
+            box-shadow: 0 0 14px 4px rgba(59, 130, 246, 0.9);
+          }
+        }
