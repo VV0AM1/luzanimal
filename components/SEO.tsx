@@ -1,5 +1,3 @@
-'use client'
-
 import Head from "next/head";
 import { siteMetadata } from "@/lib/seo-config";
 
@@ -14,6 +12,24 @@ export default function SEO({
   description = siteMetadata.description,
   keywords = siteMetadata.keywords,
 }: Props) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Almascotas S.L.",
+    "image": `${siteMetadata.url}/images/pet_logo.png`,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Carrer de Severo Ochoa, 46",
+      "addressLocality": "Granollers",
+      "addressCountry": "ES"
+    },
+    "url": siteMetadata.url,
+    "telephone": "+34 684 418 499",
+    "priceRange": "$$",
+    "openingHours": "Mo-Su 00:00-23:59",
+    "areaServed": "Barcelona, Granollers, Catalunya"
+  };
+
   return (
     <Head>
       <title>{title}</title>
@@ -24,6 +40,11 @@ export default function SEO({
       <meta property="og:locale" content={siteMetadata.locale} />
       <meta property="og:site_name" content={siteMetadata.siteName} />
       <link rel="canonical" href={siteMetadata.url} />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
     </Head>
   );
 }
