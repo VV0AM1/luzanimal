@@ -41,7 +41,6 @@ export default function SEO({
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords.join(", ")} />
-      <meta name="google-site-verification" content="b69x1eLWnGO7cMYp3OZ9TX7XVYuyGO4_Wz2omaVvJJc" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:locale" content={siteMetadata.locale} />
