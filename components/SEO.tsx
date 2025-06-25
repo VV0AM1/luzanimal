@@ -15,19 +15,25 @@ export default function SEO({
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "Almascotas S.L.",
+    "name": "Luz Animal S.L.",
     "image": `${siteMetadata.url}/images/pet_logo.png`,
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Carrer de Severo Ochoa, 46",
       "addressLocality": "Granollers",
+      "postalCode": "08403",
+      "addressRegion": "Barcelona",
       "addressCountry": "ES"
     },
     "url": siteMetadata.url,
     "telephone": "+34 684 418 499",
     "priceRange": "$$",
     "openingHours": "Mo-Su 00:00-23:59",
-    "areaServed": "Barcelona, Granollers, Catalunya"
+    "areaServed": ["Barcelona", "Granollers", "Catalunya"],
+    "sameAs": [
+      "https://www.facebook.com/luzanimalbarcelona",
+      "https://www.instagram.com/luzanimal/"
+    ]
   };
 
   return (

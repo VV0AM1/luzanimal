@@ -21,13 +21,13 @@ export default function Hero() {
       <div className="bg-black/50 absolute inset-0 z-0" />
 
       <div className="absolute top-10 left-10 w-12 h-12 opacity-30 animate-float-slow pointer-events-none">
-        <img src="/images/paw.svg" alt="Paw" className="w-full h-full" />
+        <img src="/images/paw.svg" alt="Logo de Luz Animal - Cremación de Mascotas" className="w-full h-full" />
       </div>
       <div className="absolute bottom-20 right-16 w-16 h-16 opacity-20 animate-float-slower pointer-events-none">
-        <img src="/images/paw.svg" alt="Paw" className="w-full h-full" />
+        <img src="/images/paw.svg" alt="Logo de Luz Animal - Cremación de Mascotas" className="w-full h-full" />
       </div>
       <div className="absolute top-1/2 left-1/3 w-10 h-10 opacity-25 animate-float-slow pointer-events-none">
-        <img src="/images/paw.svg" alt="Paw" className="w-full h-full" />
+        <img src="/images/paw.svg" alt="Logo de Luz Animal - Cremación de Mascotas" className="w-full h-full" />
       </div>
 
       <div

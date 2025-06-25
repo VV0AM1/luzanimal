@@ -35,7 +35,7 @@ export default function Header() {
         >
           <img
             src="/images/pet_logo.png"
-            alt="Luz Animal Logo"
+            alt="Logo de Luz Animal - Cremación de Mascotas"
             className="w-8 h-8 object-contain"
           />
           <span className="text-2xl font-extrabold text-blue-800 select-none">

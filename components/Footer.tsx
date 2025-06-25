@@ -12,7 +12,7 @@ export default function Footer() {
     >
       <div className="max-w-7xl mx-auto px-6 py-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         <div>
-          <h3 className="text-base font-bold mb-2">Almascotas S.L.</h3>
+          <h3 className="text-base font-bold mb-2">Luz Animal S.L.</h3>
           <p className="text-xs mb-1 opacity-70">N.I.F.: B10540581</p>
           <p className="text-xs opacity-70">Pompas fúnebres y actividades relacionadas</p>
         </div>
