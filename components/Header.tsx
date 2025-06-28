@@ -201,7 +201,7 @@ export default function Header() {
                   Incineración Colectiva
                 </Link>
                 <Link
-                  href="/servicios/cremacion-presencial"
+                  href="/servicios/incineracion-presencial"
                   onClick={toggleMenu}
                   className="hover:text-blue-600 transition-colors"
                 >
