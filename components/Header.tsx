@@ -180,7 +180,7 @@ export default function Header() {
               onClick={toggleMobileSub}
               className="w-full flex justify-between items-center hover:text-blue-600 transition-colors focus:outline-none"
             >
-              Servicios <ChevronDown className={`w-5 h-5 transform transition-transform ${
+              <Link href="/servicios">Servicios</Link> <ChevronDown className={`w-5 h-5 transform transition-transform ${
                 mobileSubOpen ? 'rotate-180' : 'rotate-0'
               }`} />
             </button>
