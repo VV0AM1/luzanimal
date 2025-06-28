@@ -1,5 +1,5 @@
 export async function GET() {
-  const urls = ["/", "/servicios", "/contacto", "/precios"]; 
+  const urls = ["/", "/servicios", "/contacto", "/quien-somos", "/faq", "/servicios/incineracion-colectiva", "/servicios/incineracion-individual", "/servicios/incineracion-presencial"]; 
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

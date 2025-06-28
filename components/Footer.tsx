@@ -21,7 +21,7 @@ export default function Footer() {
           <h4 className="text-base font-bold mb-2">Ubicación</h4>
           <p className="flex items-center gap-2 mb-1 opacity-80">
             <FaMapMarkerAlt className="text-[#6699ff]" />
-            Carrer de Severo Ochoa, 46, Granollers
+            Carrer de Severo Ochoa, 43, Granollers
           </p>
           <div className="flex gap-4 text-[#6699ff] text-sm mt-2">
             <Link href="https://maps.apple.com/?address=Carrer%20de%20Severo%20Ochoa,%2046,%20Granollers" target="_blank" className="hover:text-[#cce0ff] transition">
@@ -53,14 +53,8 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-2">
               <FaEnvelope className="text-[#6699ff]" />
-              <Link href="mailto:info@almascotas.com" className="hover:text-[#cce0ff] transition">
-                info@almascotas.com
-              </Link>
-            </li>
-            <li className="flex items-center gap-2 mt-2">
-              <FaInstagram className="text-pink-400" />
-              <Link href="https://instagram.com" target="_blank" className="hover:text-[#cce0ff] transition">
-                Instagram
+              <Link href="mailto:luzanimalbcn@gmail.com" className="hover:text-[#cce0ff] transition">
+                luzanimalbcn@gmail.com
               </Link>
             </li>
           </ul>

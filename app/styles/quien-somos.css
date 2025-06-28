@@ -1,0 +1,41 @@
+:root {
+  --blue-50: #EAF6FF;
+  --blue-100: #C6E8FF;
+  --blue-300: #8CCEFF;
+  --blue-500: #58B0FF;
+  --blue-700: #1e3a8a; 
+  --text-main: #1f2937;
+  --text-light: #ffffff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.animate-fadeInDown {
+  animation: fadeInDown 0.8s ease forwards;
+}
+
+.delay-200ms {
+  animation-delay: 0.2s;
+}
+

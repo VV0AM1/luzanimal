@@ -1,7 +1,8 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from 'react';
 import { CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const services = [
   {
@@ -25,8 +26,7 @@ const services = [
   },
   {
     title: 'Incineración Individual',
-    description:
-      'Incluye urna, certificado y carta de duelo. Posibilidad de asistencia.',
+    description: 'Incluye urna, certificado y carta de duelo. Posibilidad de asistencia.',
     prices: [
       ['Hasta 3 kg', '230 €'],
       ['3 - 10 kg', '245 €'],
@@ -45,8 +45,7 @@ const services = [
   },
   {
     title: 'Incineración Presencial',
-    description:
-      'Despedida íntima, velatorio privado, atención personalizada y más.',
+    description: 'Despedida íntima, velatorio privado y atención personalizada.',
     prices: [
       ['Hasta 3 kg', '260 €'],
       ['3 - 10 kg', '275 €'],
@@ -56,7 +55,7 @@ const services = [
     ],
     extras: [
       'Velatorio y video en directo',
-      'Obsequio especial + Huella escayola',
+      'Obsequio especial y huella en escayola',
       'Parking y Wi-Fi gratuito',
     ],
     bgFrom: '#8CCEFF',
@@ -66,90 +65,97 @@ const services = [
 ];
 
 export default function Prices() {
-  const [fadeIn, setFadeIn] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setFadeIn(true), 100);
+    const timer = setTimeout(() => setLoaded(true), 150);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <section  
+    <section
+      id="precios"
+      className="relative py-24 px-16 md:px-12 bg-gradient-to-br from-[#F8FCFF] to-[#D0ECFF] overflow-hidden"
+    >
+      <div
+        className="absolute inset-0 bg-[url('/images/paw-light.svg')] bg-[length:180px_180px] bg-repeat opacity-5 pointer-events-none"
+        aria-hidden="true"
+      />
 
-      className="relative py-24 px-10 bg-gradient-to-br from-[#EAF6FF] via-[#F8FCFF] to-[#D0ECFF] overflow-hidden"
-      id="precios">
-        <div
-          className="absolute inset-0 bg-[url('/images/paw-light.svg')] bg-[length:200px_200px] bg-repeat opacity-[0.04] pointer-events-none"
-          aria-hidden="true"
-        />
-        <div className="absolute -top-40 -left-20 w-[400px] h-[400px] bg-blue-200/30 rounded-full filter blur-3xl z-0" />
-        <div className="absolute -bottom-32 right-0 w-[300px] h-[300px] bg-blue-300/20 rounded-full filter blur-2xl z-0" />
+      <div className="absolute -top-32 -left-16 w-[350px] h-[350px] bg-blue-200/20 rounded-full filter blur-3xl" />
+      <div className="absolute -bottom-28 right-0 w-[300px] h-[300px] bg-blue-300/15 rounded-full filter blur-2xl" />
 
-      <div className="relative z-10 max-w-7xl mx-auto text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-blue-800 mb-4 tracking-tight">
+      <div className="relative z-10 max-w-7xl mx-auto text-center mb-20">
+        <h2 className="text-5xl md:text-6xl font-extrabold text-blue-800 mb-6 tracking-tight">
           Tarifas de Cremación
         </h2>
-        <p className="text-gray-700 text-lg max-w-2xl mx-auto">
-          Elige el tipo de servicio que más se adapta a ti. Cuidamos a tu mascota con amor y respeto.
+        <p className="text-gray-700 text-xl max-w-3xl mx-auto">
+          Selecciona el servicio que mejor se adapte a ti y a tu mascota. Transparencia
+          de precios y atención cercana.
         </p>
       </div>
 
-      <div className="relative z-10 grid gap-10 md:grid-cols-3">
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {services.map((service, idx) => (
-          <div
+          <motion.div
             key={idx}
-            className={`relative rounded-3xl p-8 shadow-xl transition-all duration-500 border ${
-              fadeIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            } ${
+            initial={{ opacity: 0, y: 20 }}
+            animate={loaded ? { opacity: 1, y: 0, transition: { delay: idx * 0.15 } } : {}}
+            className={`relative rounded-3xl overflow-hidden shadow-lg border transition-transform duration-500 hover:scale-[1.03] hover:shadow-2xl bg-white w-full h-[44rem] p-12 ${
               service.highlight
-                ? 'border-blue-700 ring-2 ring-blue-500 scale-[1.02]'
-                : 'border-blue-100'
+                ? 'border-blue-700 ring-2 ring-blue-300'
+                : 'border-transparent'
             }`}
-            style={{
-              background: `linear-gradient(135deg, ${service.bgFrom}, ${service.bgTo})`,
-            }}
-            >
+            style={{ background: `linear-gradient(120deg, ${service.bgFrom}, ${service.bgTo})` }}
+          >
             {service.highlight && (
-              <div className="absolute top-[-12px] right-[-12px] bg-blue-600 text-white text-xs px-3 py-1 rounded-full shadow">
+              <div className="absolute top-6 right-6 bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-full shadow">
                 Recomendado
               </div>
             )}
 
-            <h3 className="text-2xl font-bold text-gray-800 mb-2 tracking-tight">{service.title}</h3>
-            <p className="text-gray-700 mb-5">{service.description}</p>
+            <div className="flex flex-col h-full">
+              <h3 className="text-3xl font-bold text-gray-800 mb-4">
+                {service.title}
+              </h3>
+              <p className="text-gray-700 mb-8 flex-grow">
+                {service.description}
+              </p>
 
-            <div className="bg-white rounded-xl px-4 py-3 mb-5 shadow-inner border border-blue-100">
-              <h4 className="text-sm font-semibold text-blue-800 mb-2">Precios por peso</h4>
-              <ul className="text-sm text-gray-800 space-y-1">
-                {service.prices.map(([peso, precio], i) => (
-                  <li key={i} className="flex justify-between border-b last:border-0 pb-1">
-                    <span>{peso}</span> <span className="font-semibold">{precio}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              <div className="bg-white rounded-xl px-6 py-4 mb-8 shadow-inner border border-blue-100">
+                <h4 className="text-base font-semibold text-blue-800 mb-3">
+                  Precio por peso:
+                </h4>
+                <ul className="text-sm text-gray-800 space-y-3">
+                  {service.prices.map(([w, p], i) => (
+                    <li key={i} className="flex justify-between">
+                      <span>{w}</span>
+                      <span className="font-semibold">{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            <div className="text-sm text-blue-900">
-              <h5 className="font-semibold mb-2">Extras incluidos o disponibles:</h5>
-              <ul className="space-y-1">
-                {service.extras.map((extra, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <CheckCircle className="w-4 h-4 mt-0.5 text-blue-600" />
-                    <span>{extra}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+              <div className="text-sm text-blue-900 mb-8">
+                <h5 className="font-semibold mb-3">Extras disponibles:</h5>
+                <ul className="space-y-2">
+                  {service.extras.map((ext, i) => (
+                    <li key={i} className="flex items-center gap-3">
+                      <CheckCircle className="w-6 h-6 text-blue-600" />
+                      <span>{ext}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            <div className="mt-6">
               <a
                 href="https://wa.me/34684418499"
-                className="block w-full text-center bg-white text-blue-600 border border-blue-500 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 hover:text-blue-700 font-semibold py-2 px-4 rounded-full shadow transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-md"
+                className="mt-auto inline-block w-full text-center bg-blue-600 text-white font-semibold py-4 rounded-full shadow hover:bg-blue-700 transition-colors duration-300"
               >
                 Solicitar Servicio
               </a>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

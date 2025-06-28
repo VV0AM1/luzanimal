@@ -9,7 +9,7 @@ export default function PetCrematoriumInfo() {
             Tanatorio de mascotas en Barcelona
           </h2>
           <p className="text-gray-300">
-            Carrer de Severo Ochoa, 46, Granollers
+            Carrer de Severo Ochoa, 43, Granollers
           </p>
 
           <div className="flex gap-4 mt-12">
