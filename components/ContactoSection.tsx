@@ -109,7 +109,7 @@ export default function ContactoSection() {
         {/* LEFT COLUMN: form + dirección */}
         <div className="flex flex-col gap-8">
           {/* FORM CARD */}
-          <div className="relative bg-[var(--text-light)] rounded-3xl p-6 shadow-2xl h-full md:h-[70%]">
+          <div className="relative bg-[var(--text-light)] rounded-3xl p-6 shadow-2xl h-full md:h-[75%]">
             <div className="absolute -top-6 -left-6 w-20 h-20 bg-[var(--blue-300)] opacity-20 rounded-full pointer-events-none" />
             <h2 className="text-2xl font-bold text-[var(--blue-700)] mb-4">
               Envía tu consulta
