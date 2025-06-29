@@ -1,23 +1,26 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { FaQuoteLeft } from 'react-icons/fa';
+import { motion } from "framer-motion";
+import { FaQuoteLeft, FaStar, FaPaw } from "react-icons/fa";
 
 const testimonials = [
   {
-    name: 'Laura G.',
+    name: "Laura G.",
     comment:
-      'El servicio fue impecable y muy humano. Me ayudaron mucho en un momento difícil.',
+      "El servicio fue impecable y muy humano. Me ayudaron mucho en un momento difícil.",
+    rating: 5,
   },
   {
-    name: 'Carlos M.',
+    name: "Carlos M.",
     comment:
-      'Agradezco la atención personalizada y el respeto que tuvieron con mi perro.',
+      "Agradezco la atención personalizada y el respeto que tuvieron con mi perro.",
+    rating: 5,
   },
   {
-    name: 'Sofía R.',
+    name: "Sofía R.",
     comment:
-      'Recomiendo Cremación Mascotas BCN a todos los que buscan un servicio serio y cercano.',
+      "Recomiendo Cremación Mascotas BCN a todos los que buscan un servicio serio y cercano.",
+    rating: 5,
   },
 ];
 
@@ -25,30 +28,56 @@ export default function Testimonials() {
   return (
     <section
       id="testimonios"
-      className="bg-gradient-to-b from-blue-50 via-blue-100 to-blue-50 py-20 px-6 overflow-hidden"
+      className="relative bg-[var(--blue-50)] py-20 px-6 overflow-hidden"
     >
-      <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-4xl font-extrabold text-blue-900 mb-12 tracking-tight">
-          Reseñas
-        </h2>
+      {/* Paw watermark */}
+      <FaPaw className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[var(--blue-100)] text-[20rem] opacity-10 pointer-events-none" />
 
-        <div className="grid gap-10 md:grid-cols-3">
-          {testimonials.map(({ name, comment }, i) => (
+      <div className="relative max-w-7xl mx-auto text-center">
+        <h2 className="text-4xl font-extrabold text-[var(--text-main)] mb-4 tracking-tight">
+          Reseñas de Clientes
+        </h2>
+        <p className="text-[var(--blue-700)] mb-12 max-w-2xl mx-auto">
+          Conoce la experiencia de quienes confiaron en Luz Animal para despedir
+          a sus mascotas con respeto y cariño.
+        </p>
+
+        <motion.div
+          className="grid gap-10 md:grid-cols-3"
+          initial="hidden"
+          whileInView="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.2 } },
+          }}
+        >
+          {testimonials.map(({ name, comment, rating }, i) => (
             <motion.blockquote
               key={i}
+              className="relative bg-white rounded-3xl p-8 pt-4 shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-2 hover:rotate-[0.5deg] border-t-4 border-[var(--blue-500)]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.2 }}
-              className="relative bg-white rounded-3xl p-6 shadow-lg hover:shadow-xl border border-blue-100 transition-all duration-300 group"
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
             >
-              <FaQuoteLeft className="text-blue-200 text-3xl absolute top-4 left-4 group-hover:text-blue-400 transition" />
-              <p className="text-gray-700 mt-8 mb-6 leading-relaxed text-sm">
+              <FaQuoteLeft className="text-[var(--blue-300)] text-2xl absolute top-4 left-4" />
+              <p className="text-gray-800 mt-8 mb-6 leading-relaxed text-base">
                 “{comment}”
               </p>
-              <footer className="text-blue-600 font-semibold text-sm">— {name}</footer>
+              <div className="flex items-center justify-center mb-4">
+                {[...Array(rating)].map((_, idx) => (
+                  <FaStar
+                    key={idx}
+                    className="text-[var(--blue-500)] w-5 h-5"
+                  />
+                ))}
+              </div>
+              <footer className="text-[var(--blue-700)] font-semibold text-lg">
+                — {name}
+              </footer>
             </motion.blockquote>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -6,7 +6,8 @@ import {
   FaPhone,
   FaEnvelope,
   FaMapMarkerAlt,
-  FaMap,
+  FaApple,
+  FaGoogle,
   FaWhatsapp,
 } from "react-icons/fa";
 import "@/app/styles/quien-somos.css";
@@ -56,166 +57,240 @@ export default function ContactoSection() {
   };
 
   return (
-    <main className="bg-[var(--blue-50)] text-[var(--text-main)]">
-      <motion.section
-        className="relative h-[70vh] flex items-center justify-center bg-[url('/images/contacto-header.jpg')] bg-cover bg-center shadow-[inset_0_0_80px_rgba(0,0,0,0.8)]"
-        initial="hidden"
-        animate="visible"
-        variants={fadeInUp}
+    <main className="bg-[var(--blue-50)] text-[var(--text-main)] pb-20">
+      {/* Hero */}
+<motion.section
+    className="relative h-[70vh] flex items-center justify-center
+              bg-[url('/images/contacto-header.jpg')] bg-cover bg-center
+              shadow-[inset_0_0_80px_rgba(0,0,0,0.8)]"
+    initial="hidden"
+    animate="visible"
+    variants={fadeInUp}
+  >
+    <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-transparent" />
+    <div className="relative z-10 text-center px-6 max-w-3xl space-y-4 text-[var(--text-light)]">
+      <motion.h1
+        className="text-5xl md:text-6xl font-extrabold drop-shadow-xl"
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.6 }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-transparent" />
-        <div className="relative z-10 text-center px-6 max-w-3xl space-y-4 text-[var(--text-light)]">
-          <motion.h1
-            className="text-5xl md:text-6xl font-extrabold drop-shadow-xl tracking-tight"
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
-            Contáctanos
-          </motion.h1>
-          <motion.p
-            className="text-xl md:text-2xl text-[var(--blue-100)]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-          >
-            Estamos aquí para ayudarte y responder tus preguntas con empatía y compromiso.
-          </motion.p>
-          <motion.p
-            className="max-w-2xl mx-auto text-center text-[var(--text-light)] opacity-90 leading-relaxed"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-          >
-            Luz Animal S.L. ofrece servicios profesionales de cremación de mascotas en
-            Barcelona, asegurando un trato personalizado y respetuoso. Rellena el formulario
-            y nuestro equipo se pondrá en contacto contigo lo antes posible.
-          </motion.p>
-        </div>
-      </motion.section>
+        Contáctanos
+      </motion.h1>
+      <motion.p
+        className="text-xl md:text-2xl text-[var(--blue-100)]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+      >
+        Estamos aquí para ayudarte con empatía y compromiso.
+      </motion.p>
+      {/* new SEO‐friendly text */}
+      <motion.p
+        className="max-w-2xl mx-auto text-[var(--text-light)] opacity-80 leading-relaxed"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.7, duration: 0.6 }}
+      >
+        Luz Animal S.L. ofrece cremación profesional de mascotas en Barcelona y Granollers, 
+        garantizando un trámite respetuoso, atención 24/7 y soluciones personalizadas para 
+        cada familia. Rellena el formulario para recibir un presupuesto inmediato.
+      </motion.p>
+    </div>
+  </motion.section>
 
+      {/* Form + Contact Info */}
       <motion.section
-        className="mt-8 py-18 px-6 sm:px-8 max-w-6xl mx-auto bg-[var(--blue-300)] rounded-3xl shadow-lg"
+        className="max-w-6xl mx-auto mt-12 px-6 sm:px-8 grid grid-cols-1 md:grid-cols-2 gap-12"
         initial="hidden"
         animate="visible"
-        viewport={{ once: true }}
         variants={fadeInUp}
       >
-        <h2 className="text-4xl font-bold mb-12 text-center text-[var(--text-light)]">
-          Formulario de Contacto
-        </h2>
-        <p className="text-center text-[var(--text-light)] mb-8 max-w-3xl mx-auto opacity-90 leading-relaxed">
-          Completa los campos con tus datos y la información de tu mascota para recibir
-          asesoramiento completo sobre nuestro servicio de cremación de mascotas en
-          Barcelona.
-        </p>
-        <div className="relative bg-[var(--text-light)] rounded-2xl p-10 shadow-2xl">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                { name: "name", placeholder: "Nombre" },
-                { name: "surname", placeholder: "Apellidos" },
-                { name: "petName", placeholder: "Nombre de tu mascota" },
-                { name: "email", placeholder: "Tu correo electrónico", type: "email" },
-              ].map((field) => (
-                <motion.div key={field.name} whileHover={{ y: -3 }}>
-                  <label className="block text-[var(--blue-700)] font-medium mb-1 capitalize">
-                    {field.placeholder}
-                  </label>
-                  <input
-                    type={field.type || "text"}
-                    name={field.name}
-                    placeholder={field.placeholder}
-                    onChange={handleChange}
-                    className="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--blue-500)] transition-shadow"
-                    required
-                  />
-                </motion.div>
-              ))}
-            </div>
-            <motion.div whileHover={{ y: -3 }}>
-              <label className="block text-[var(--blue-700)] font-medium mb-1">
-                Descripción
-              </label>
-              <textarea
-                name="description"
-                placeholder="Cuéntanos cómo podemos ayudarte"
-                onChange={handleChange}
-                rows={6}
-                className="w-full p-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--blue-500)] transition-shadow"
-                required
-              />
-            </motion.div>
-            <motion.button
-              type="submit"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              className="mx-auto block bg-[var(--blue-700)] hover:bg-[var(--blue-500)] text-[var(--text-light)] px-10 py-4 rounded-full font-semibold shadow-md transition-all text-lg"
-            >
-              Enviar mensaje
-            </motion.button>
-            {status && (
-              <p className="mt-4 text-center text-lg font-medium text-[var(--blue-700)]">
-                {status}
-              </p>
-            )}
-          </form>
-        </div>
-      </motion.section>
-
-      <motion.section
-        className="py-16 px-6 sm:px-8 bg-[var(--blue-50)]"
-        initial="hidden"
-        animate="visible"
-        viewport={{ once: true }}
-        variants={fadeInUp}
-      >
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-start">
-          <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-[var(--text-main)]">
-              Contacto y Ubicación
+        {/* LEFT COLUMN: form + dirección */}
+        <div className="flex flex-col gap-8">
+          {/* FORM CARD */}
+          <div className="relative bg-[var(--text-light)] rounded-3xl p-6 shadow-2xl h-full md:h-[70%]">
+            <div className="absolute -top-6 -left-6 w-20 h-20 bg-[var(--blue-300)] opacity-20 rounded-full pointer-events-none" />
+            <h2 className="text-2xl font-bold text-[var(--blue-700)] mb-4">
+              Envía tu consulta
             </h2>
-            <p className="text-[var(--text-main)] max-w-xl opacity-90 leading-relaxed">
-              Ponte en contacto con Luz Animal S.L. para cualquier consulta sobre nuestros
-              servicios de cremación y despedida de mascotas en Granollers y Barcelona.
-              Estamos disponibles por teléfono, WhatsApp o correo electrónico.
-            </p>
-            <ul className="space-y-4 text-[var(--text-main)]">
-              <li className="flex items-center space-x-2">
-                <FaWhatsapp className="text-[var(--blue-700)]" />
-                <span>+34 684 418 499</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <FaPhone className="text-[var(--blue-700)]" />
-                <span>+34 935 851 040</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <FaPhone className="text-[var(--blue-700)]" />
-                <span>+34 684 416 567</span>
-              </li>
-              <li className="italic">Pompas fúnebres y actividades relacionadas</li>
-              <li className="flex items-center">
-                <FaMapMarkerAlt className="mr-2 text-[var(--blue-700)]" />
-                Carrer de Severo Ochoa, 43, Granollers
-              </li>
-              <li className="flex items-center">
-                <FaMap className="mr-2 text-[var(--blue-700)]" />
-                Apple Maps / Google Maps
-              </li>
-              <li className="flex items-center">
-                <FaEnvelope className="mr-2 text-[var(--blue-700)]" />
-                luzanimalbcn@gmail.com
-              </li>
-            </ul>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[
+                  { name: "name", placeholder: "Nombre" },
+                  { name: "surname", placeholder: "Apellidos" },
+                  { name: "petName", placeholder: "Nombre de tu mascota" },
+                  { name: "email", placeholder: "Tu correo electrónico", type: "email" },
+                ].map((field) => (
+                  <motion.div key={field.name} whileHover={{ y: -2 }}>
+                    <label
+                      htmlFor={field.name}
+                      className="block text-[var(--blue-700)] font-medium mb-1 capitalize"
+                    >
+                      {field.placeholder}
+                    </label>
+                    <input
+                      id={field.name}
+                      type={field.type || "text"}
+                      name={field.name}
+                      placeholder={field.placeholder}
+                      onChange={handleChange}
+                      className="w-full p-3 rounded-xl border border-gray-300
+                                 focus:outline-none focus:ring-2 focus:ring-[var(--blue-500)]
+                                 transition-shadow bg-[var(--blue-50)] placeholder-gray-500"
+                      required
+                    />
+                  </motion.div>
+                ))}
+              </div>
+
+              <motion.div whileHover={{ y: -2 }}>
+                <label
+                  htmlFor="description"
+                  className="block text-[var(--blue-700)] font-medium mb-1"
+                >
+                  Descripción
+                </label>
+                <textarea
+                  id="description"
+                  name="description"
+                  placeholder="Cuéntanos cómo podemos ayudarte"
+                  onChange={handleChange}
+                  rows={4}
+                  className="w-full p-3 rounded-xl border border-gray-300
+                             focus:outline-none focus:ring-2 focus:ring-[var(--blue-500)]
+                             transition-shadow bg-[var(--blue-50)] placeholder-gray-500"
+                  required
+                />
+              </motion.div>
+
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.97 }}
+                className="w-full bg-[var(--blue-700)] hover:bg-[var(--blue-500)]
+                           text-[var(--text-light)] px-6 py-4 rounded-full font-semibold
+                           shadow-md hover:shadow-lg transition-all"
+              >
+                Enviar mensaje
+              </motion.button>
+
+              {status && (
+                <p className="mt-2 text-center text-base font-medium text-[var(--blue-700)]">
+                  {status}
+                </p>
+              )}
+            </form>
           </div>
-          <div className="w-full h-64 rounded-2xl overflow-hidden shadow-lg">
+
+          {/* Dirección card under the form */}
+          <motion.div
+            className="flex items-start gap-4 p-6 bg-[var(--text-light)] rounded-2xl shadow-lg hover:shadow-2xl transition-all mt-2"
+            whileHover={{ translateY: -4 }}
+          >
+            <FaMapMarkerAlt className="text-[var(--blue-700)] w-6 h-6" />
+            <div>
+              <h3 className="font-semibold mb-1">Dirección</h3>
+              <p>Carrer de Severo Ochoa, 43</p>
+              <p>Granollers, Barcelona</p>
+              <div className="mt-2 flex gap-4">
+                <a
+                  href="https://maps.apple.com/?address=Carrer%20de%20Severo%20Ochoa,%2043,%20Granollers"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-[var(--blue-700)] hover:underline"
+                >
+                  <FaApple /> Apple Maps
+                </a>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Carrer+de+Severo+Ochoa,+43,+Granollers"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-[var(--blue-700)] hover:underline"
+                >
+                  <FaGoogle /> Google Maps
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* RIGHT COLUMN: other contacts + map */}
+        <div className="space-y-8">
+          <h2 className="text-2xl font-bold text-[var(--blue-700)]">
+            Contacto Directo
+          </h2>
+          <p className="opacity-90 leading-relaxed">
+            Prefieres hablar directamente con nosotros? Usa cualquiera de estos canales:
+          </p>
+
+          <div className="grid grid-cols-1 gap-6">
+            {[
+              {
+                icon: <FaWhatsapp className="text-green-400 w-6 h-6" />,
+                label: "WhatsApp",
+                content: (
+                  <a
+                    href="https://wa.me/34684418499"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[var(--blue-700)] hover:underline"
+                  >
+                    +34 684 418 499
+                  </a>
+                ),
+              },
+              {
+                icon: <FaPhone className="text-[var(--blue-700)] w-6 h-6" />,
+                label: "Teléfono",
+                content: (
+                  <>
+                    <p>+34 935 851 040</p>
+                    <p>+34 684 416 567</p>
+                  </>
+                ),
+              },
+              {
+                icon: <FaEnvelope className="text-[var(--blue-700)] w-6 h-6" />,
+                label: "Email",
+                content: (
+                  <a
+                    href="mailto:luzanimalbcn@gmail.com"
+                    className="text-[var(--blue-700)] hover:underline"
+                  >
+                    luzanimalbcn@gmail.com
+                  </a>
+                ),
+              },
+            ].map((card, i) => (
+              <motion.div
+                key={i}
+                className="flex items-start gap-4 p-6 bg-[var(--text-light)] rounded-2xl shadow-lg hover:shadow-2xl transition-all"
+                whileHover={{ translateY: -4 }}
+              >
+                {card.icon}
+                <div>
+                  <h3 className="font-semibold mb-1">{card.label}</h3>
+                  {card.content}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Embedded Map */}
+          <motion.div
+            className="relative z-20 w-full h-64 rounded-3xl overflow-hidden shadow-lg"
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
+          >
             <iframe
               src="https://maps.google.com/maps?q=Carrer%20de%20Severo%20Ochoa%2C%2043%2C%20Granollers&output=embed"
               className="w-full h-full border-0"
               allowFullScreen
               loading="lazy"
-            ></iframe>
-          </div>
+            />
+          </motion.div>
         </div>
       </motion.section>
     </main>
