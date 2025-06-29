@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { X, Menu, Phone, ChevronDown, Mail } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
+import "@/app/styles/quien-somos.css";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);

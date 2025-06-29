@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FaQuoteLeft, FaStar, FaPaw } from "react-icons/fa";
+import "@/app/styles/quien-somos.css";
 
 const testimonials = [
   {
@@ -30,7 +31,6 @@ export default function Testimonials() {
       id="testimonios"
       className="relative bg-[var(--blue-50)] py-20 px-6 overflow-hidden"
     >
-      {/* Paw watermark */}
       <FaPaw className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[var(--blue-100)] text-[20rem] opacity-10 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto text-center">
@@ -45,7 +45,7 @@ export default function Testimonials() {
         <motion.div
           className="grid gap-10 md:grid-cols-3"
           initial="hidden"
-          whileInView="visible"
+          animate="visible"
           variants={{
             hidden: {},
             visible: { transition: { staggerChildren: 0.2 } },

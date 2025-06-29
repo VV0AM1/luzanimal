@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaPaw, FaChevronDown } from "react-icons/fa";
+import "@/app/styles/quien-somos.css";
 
 export default function Hero() {
   return (

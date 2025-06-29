@@ -8,11 +8,11 @@ import {
   FaEnvelope,
   FaPhoneAlt,
 } from 'react-icons/fa';
+import "@/app/styles/quien-somos.css";
 
 export default function Footer() {
   return (
     <footer className="relative bg-gradient-to-br from-[var(--blue-700)] to-[var(--blue-900)] text-[var(--text-light)]">
-      {/* Wave Divider */}
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
         <svg
           className="relative block w-[calc(100%+1px)] h-8"
@@ -28,7 +28,6 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 pt-16">
-        {/* Company Info */}
         <div>
           <h3 className="text-lg font-bold mb-2">Luz Animal S.L.</h3>
           <p className="text-xs mb-1 opacity-70">N.I.F.: B10540581</p>
@@ -37,7 +36,6 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Location */}
         <div>
           <h4 className="text-lg font-bold mb-2">Ubicación</h4>
           <p className="flex items-center gap-2 mb-2 opacity-80">
@@ -63,7 +61,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Contact & Social */}
         <div>
           <h4 className="text-lg font-bold mb-2">Contacto</h4>
           <ul className="space-y-2 opacity-80 mb-4">

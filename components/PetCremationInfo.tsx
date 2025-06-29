@@ -2,6 +2,7 @@
 
 import { FaMapMarkerAlt, FaPhoneAlt, FaApple, FaGoogle, FaWhatsapp, FaClock, FaHandsHelping } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import "@/app/styles/quien-somos.css";
 
 export default function PetCrematoriumInfo() {
   return (

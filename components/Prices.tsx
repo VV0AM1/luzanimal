@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
+import "@/app/styles/quien-somos.css";
 
 const services = [
   {
