@@ -39,3 +39,27 @@
   animation-delay: 0.2s;
 }
 
+
+
+select::placeholder {
+  color: #94a3b8; 
+  opacity: 1;
+}
+
+select {
+  background-color: var(--blue-50) !important;
+  color: var(--text-main);
+  border: 1px solid var(--blue-100);
+  border-radius: 12px;
+}
+
+select:focus {
+  background-color: var(--blue-50) !important;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--blue-300);
+}
+
+option {
+  background-color: var(--blue-50);
+  color: var(--text-main);
+}

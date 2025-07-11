@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { X, Menu, Phone, ChevronDown, Mail } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import "@/app/styles/quien-somos.css";
+import { FaCalculator } from 'react-icons/fa';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -106,6 +107,12 @@ export default function Header() {
             <Link href="/faq" className="text-gray-700 hover:text-blue-600 transition-colors">
               Preguntas
             </Link>
+          </li>
+            <li className='flex'>
+            <Link href="/calculadora" className="text-gray-700 hover:text-blue-600 transition-colors">
+              Calculadora
+            </Link>
+            <FaCalculator className="w-5 h-5 text-gray-700 ml-2" />
           </li>
         </ul>
 
@@ -219,6 +226,9 @@ export default function Header() {
           </Link>
           <Link href="/faq" onClick={toggleMenu} className="hover:text-blue-600 transition-colors">
             Preguntas
+          </Link>
+          <Link href="/calculadora" onClick={toggleMenu} className="hover:text-blue-600 transition-colors">
+            Calculadora
           </Link>
         </nav>
 
