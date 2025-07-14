@@ -25,10 +25,12 @@ const extras = [
 
 export default function IndividualSection() {
   return (
-    <main className="bg-[var(--blue-50)] text-[var(--text-main)] overflow-hidden">
+    <main className="bg-[var(--blue-50)] text-[var(--text-main)] overflow-hidden relative">
+      {/* Decorative circle now safely contained */}
+      <div className="pointer-events-none absolute -top-20 -right-20 w-72 h-72 rounded-full bg-[var(--blue-300)] opacity-20 z-0" />
 
       <motion.section
-        className="relative h-96 md:h-[60vh] flex items-center justify-center bg-[url('/images/individual-header.jpg')] bg-cover bg-center shadow-inner shadow-black/50"
+        className="relative h-96 md:h-[60vh] flex items-center justify-center bg-[url('/images/individual-header.jpg')] bg-cover bg-center shadow-inner shadow-black/50 z-10"
         initial="hidden"
         animate="visible"
         variants={fadeInUp}
@@ -43,8 +45,6 @@ export default function IndividualSection() {
           </p>
         </div>
       </motion.section>
-
-      <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-[var(--blue-300)] opacity-20" />
 
       <div className="w-24 mx-auto my-8 border-t-4 border-[var(--blue-500)]"></div>
 

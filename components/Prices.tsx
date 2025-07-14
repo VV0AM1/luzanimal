@@ -1,66 +1,66 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import { CheckCircle } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useEffect, useState } from "react";
+import { CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
 import "@/app/styles/quien-somos.css";
 
 const services = [
   {
-    title: 'Incineración Colectiva',
-    description: 'Sin recuperación de cenizas. Económica y respetuosa.',
+    title: "Incineración Colectiva",
+    description: "Sin recuperación de cenizas. Económica y respetuosa.",
     prices: [
-      ['Hasta 3 kg', '65 €'],
-      ['3 - 10 kg', '75 €'],
-      ['10 - 25 kg', '85 €'],
-      ['25 - 40 kg', '110 €'],
-      ['40+ kg', '130 €'],
+      ["Hasta 3 kg", "65 €"],
+      ["3 - 10 kg", "75 €"],
+      ["10 - 25 kg", "85 €"],
+      ["25 - 40 kg", "110 €"],
+      ["40+ kg", "130 €"],
     ],
     extras: [
-      'Recogida desde 20 € (según distancia)',
-      'Festivos y fines de semana: +20 €',
-      'Cuerpo en descomposición: desde 35 €',
+      "Recogida desde 20 € (según distancia)",
+      "Festivos y fines de semana: +20 €",
+      "Cuerpo en descomposición: desde 35 €",
     ],
-    bgFrom: '#EAF6FF',
-    bgTo: '#D0ECFF',
+    bgFrom: "#EAF6FF",
+    bgTo: "#D0ECFF",
     highlight: false,
   },
   {
-    title: 'Incineración Individual',
-    description: 'Incluye urna, certificado y carta de duelo. Posibilidad de asistencia.',
+    title: "Incineración Individual",
+    description: "Incluye urna, certificado y carta de duelo. Posibilidad de asistencia.",
     prices: [
-      ['Hasta 3 kg', '230 €'],
-      ['3 - 10 kg', '245 €'],
-      ['10 - 25 kg', '260 €'],
-      ['25 - 40 kg', '280 €'],
-      ['40+ kg', '290 €'],
+      ["Hasta 3 kg", "230 €"],
+      ["3 - 10 kg", "245 €"],
+      ["10 - 25 kg", "260 €"],
+      ["25 - 40 kg", "280 €"],
+      ["40+ kg", "290 €"],
     ],
     extras: [
-      'Entrega a domicilio: desde 20 €',
-      'Huella en escayola: +30 €',
-      'Ceremonia fin de semana: +60 €',
+      "Entrega a domicilio: desde 20 €",
+      "Huella en escayola: +30 €",
+      "Ceremonia fin de semana: +60 €",
     ],
-    bgFrom: '#C6E8FF',
-    bgTo: '#8CCEFF',
+    bgFrom: "#C6E8FF",
+    bgTo: "#8CCEFF",
     highlight: true,
   },
   {
-    title: 'Incineración Presencial',
-    description: 'Despedida íntima, velatorio privado y atención personalizada.',
+    title: "Incineración Presencial",
+    description: "Despedida íntima, velatorio privado y atención personalizada.",
     prices: [
-      ['Hasta 3 kg', '260 €'],
-      ['3 - 10 kg', '275 €'],
-      ['10 - 25 kg', '290 €'],
-      ['25 - 40 kg', '310 €'],
-      ['40+ kg', '330 €'],
+      ["Hasta 3 kg", "260 €"],
+      ["3 - 10 kg", "275 €"],
+      ["10 - 25 kg", "290 €"],
+      ["25 - 40 kg", "310 €"],
+      ["40+ kg", "330 €"],
     ],
     extras: [
-      'Velatorio y video en directo',
-      'Obsequio especial y huella en escayola',
-      'Parking y Wi-Fi gratuito',
+      "Velatorio y video en directo",
+      "Obsequio especial y huella en escayola",
+      "Parking y Wi-Fi gratuito",
     ],
-    bgFrom: '#8CCEFF',
-    bgTo: '#58B0FF',
+    bgFrom: "#8CCEFF",
+    bgTo: "#58B0FF",
     highlight: false,
   },
 ];
@@ -82,7 +82,6 @@ export default function Prices() {
         className="absolute inset-0 bg-[url('/images/paw-light.svg')] bg-[length:180px_180px] bg-repeat opacity-5 pointer-events-none"
         aria-hidden="true"
       />
-
       <div className="absolute -top-32 -left-16 w-[350px] h-[350px] bg-blue-200/20 rounded-full filter blur-3xl" />
       <div className="absolute -bottom-28 right-0 w-[300px] h-[300px] bg-blue-300/15 rounded-full filter blur-2xl" />
 
@@ -101,13 +100,19 @@ export default function Prices() {
           <motion.div
             key={idx}
             initial={{ opacity: 0, y: 20 }}
-            animate={loaded ? { opacity: 1, y: 0, transition: { delay: idx * 0.15 } } : {}}
+            animate={
+              loaded
+                ? { opacity: 1, y: 0, transition: { delay: idx * 0.15 } }
+                : {}
+            }
             className={`relative rounded-3xl overflow-hidden shadow-lg border transition-transform duration-500 hover:scale-[1.03] hover:shadow-2xl bg-white w-full h-[44rem] p-12 ${
               service.highlight
-                ? 'border-blue-700 ring-2 ring-blue-300'
-                : 'border-transparent'
+                ? "border-blue-700 ring-2 ring-blue-300"
+                : "border-transparent"
             }`}
-            style={{ background: `linear-gradient(120deg, ${service.bgFrom}, ${service.bgTo})` }}
+            style={{
+              background: `linear-gradient(120deg, ${service.bgFrom}, ${service.bgTo})`,
+            }}
           >
             {service.highlight && (
               <div className="absolute top-6 right-6 bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-full shadow">
@@ -119,9 +124,7 @@ export default function Prices() {
               <h3 className="text-3xl font-bold text-gray-800 mb-4">
                 {service.title}
               </h3>
-              <p className="text-gray-700 mb-8 flex-grow">
-                {service.description}
-              </p>
+              <p className="text-gray-700 mb-8 flex-grow">{service.description}</p>
 
               <div className="bg-white rounded-xl px-6 py-4 mb-8 shadow-inner border border-blue-100">
                 <h4 className="text-base font-semibold text-blue-800 mb-3">
@@ -141,9 +144,9 @@ export default function Prices() {
                 <h5 className="font-semibold mb-3">Extras disponibles:</h5>
                 <ul className="space-y-2">
                   {service.extras.map((ext, i) => (
-                    <li key={i} className="flex items-center gap-3">
-                      <CheckCircle className="w-6 h-6 text-blue-600" />
-                      <span>{ext}</span>
+                    <li key={i} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-blue-600 mt-[2px]" />
+                      <span className="pt-[2px]">{ext}</span>
                     </li>
                   ))}
                 </ul>
