@@ -52,7 +52,6 @@ Nuestro equipo te guiará si tu mascota proviene de residencia o protectora.
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
-
   return (
     <main className="bg-[var(--blue-50)] text-[var(--text-main)]">
       <motion.section

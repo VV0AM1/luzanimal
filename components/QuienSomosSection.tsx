@@ -12,6 +12,7 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import "@/app/styles/quien-somos.css";
+import { useTracking } from "@/app/context/TrackingContext";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -19,6 +20,9 @@ const fadeInUp = {
 };
 
 export default function QuienSomosSection() {
+
+  const { trackEvent } = useTracking(); 
+
   return (
     <main className="bg-[var(--blue-50)] text-[var(--text-main)] overflow-hidden">
       <motion.section
@@ -65,7 +69,6 @@ export default function QuienSomosSection() {
         animate="visible"
         variants={fadeInUp}
       >
-        {/* Timeline/Text */}
         <div className="space-y-6">
           <h2 className="text-4xl font-bold">Nuestra Trayectoria y Hitos</h2>
           <p className="leading-relaxed opacity-90">
@@ -92,7 +95,6 @@ export default function QuienSomosSection() {
           </ul>
         </div>
 
-        {/* Smaller Image, next to timeline */}
         <motion.div
           className="relative w-full md:w-auto max-w-md h-48 md:h-64 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all"
           whileHover={{ scale: 1.03 }}
@@ -210,6 +212,13 @@ export default function QuienSomosSection() {
         </p>
         <motion.a
           href="https://wa.me/34684418499"
+          onClick={() =>
+            trackEvent("whatsapp_click", {
+              source: "QuienSomosSection - CTA",
+              phone: "34684418499",
+              timestamp: new Date().toISOString(),
+            })
+          }
           className="inline-block bg-[var(--blue-700)] hover:bg-[var(--blue-500)] text-[var(--text-light)] px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all"
           whileHover={{ scale: 1.05 }}
         >

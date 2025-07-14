@@ -6,6 +6,7 @@ import { X, Menu, Phone, ChevronDown, Mail } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import "@/app/styles/quien-somos.css";
 import { FaCalculator } from 'react-icons/fa';
+import { useTracking } from "@/app/context/TrackingContext";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,6 +16,16 @@ export default function Header() {
 
   const toggleMenu = () => setMenuOpen(open => !open);
   const toggleMobileSub = () => setMobileSubOpen(open => !open);
+
+  const { trackEvent } = useTracking(); 
+
+  const handleWhatsAppClick = (source: string) => {
+    trackEvent("whatsapp_click", {
+      source,
+      phone: "34684418499",
+      timestamp: new Date().toISOString(),
+    });
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -122,6 +133,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 hover:underline"
+            onClick={() => handleWhatsAppClick("Header - Desktop")}
           >
             <FaWhatsapp className="text-green-500 w-4 h-4" />+34 684 418 499
           </a>
@@ -238,6 +250,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
+            onClick={() => handleWhatsAppClick("Header - Mobile Menu Icon")}
           >
             <FaWhatsapp size={24} className="text-green-500" />
           </a>

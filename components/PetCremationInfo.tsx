@@ -3,8 +3,20 @@
 import { FaMapMarkerAlt, FaPhoneAlt, FaApple, FaGoogle, FaWhatsapp, FaClock, FaHandsHelping } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import "@/app/styles/quien-somos.css";
+import { useTracking } from "@/app/context/TrackingContext";
 
 export default function PetCrematoriumInfo() {
+
+  const { trackEvent } = useTracking(); 
+
+  const handleWhatsAppClick = () => {
+    trackEvent("whatsapp_click", {
+      source: "PetCrematoriumInfo Section",
+      phone: "34684418499",
+      timestamp: new Date().toISOString(),
+    });
+  };
+
   return (
     <section
       id="contacto"
@@ -65,6 +77,7 @@ export default function PetCrematoriumInfo() {
               href="https://wa.me/34684418499"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleWhatsAppClick} 
               className="inline-flex items-center gap-2 bg-[var(--blue-300)] hover:bg-[var(--blue-100)] text-[var(--text-main)] font-semibold px-6 py-3 rounded-full shadow-lg transition"
             >
               <FaWhatsapp className="w-5 h-5" /> +34 684 418 499

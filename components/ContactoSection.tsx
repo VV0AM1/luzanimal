@@ -11,6 +11,7 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import "@/app/styles/quien-somos.css";
+import { useTracking } from "@/app/context/TrackingContext";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -34,6 +35,7 @@ export default function ContactoSection() {
     description: "",
   });
   const [status, setStatus] = useState<string>("");
+  const { trackEvent } = useTracking(); 
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -58,7 +60,6 @@ export default function ContactoSection() {
 
   return (
     <main className="bg-[var(--blue-50)] text-[var(--text-main)] pb-20">
-      {/* Hero */}
 <motion.section
     className="relative h-[70vh] flex items-center justify-center
               bg-[url('/images/contacto-header.jpg')] bg-cover bg-center
@@ -85,7 +86,6 @@ export default function ContactoSection() {
       >
         Estamos aquí para ayudarte con empatía y compromiso.
       </motion.p>
-      {/* new SEO‐friendly text */}
       <motion.p
         className="max-w-2xl mx-auto text-[var(--text-light)] opacity-80 leading-relaxed"
         initial={{ opacity: 0 }}
@@ -99,16 +99,13 @@ export default function ContactoSection() {
     </div>
   </motion.section>
 
-      {/* Form + Contact Info */}
       <motion.section
         className="max-w-6xl mx-auto mt-12 px-6 sm:px-8 grid grid-cols-1 md:grid-cols-2 gap-12"
         initial="hidden"
         animate="visible"
         variants={fadeInUp}
       >
-        {/* LEFT COLUMN: form + dirección */}
         <div className="flex flex-col gap-8">
-          {/* FORM CARD */}
           <div className="relative bg-[var(--text-light)] rounded-3xl p-6 shadow-2xl h-full md:h-[75%]">
             <div className="absolute -top-6 -left-6 w-20 h-20 bg-[var(--blue-300)] opacity-20 rounded-full pointer-events-none" />
             <h2 className="text-2xl font-bold text-[var(--blue-700)] mb-4">
@@ -183,7 +180,6 @@ export default function ContactoSection() {
             </form>
           </div>
 
-          {/* Dirección card under the form */}
           <motion.div
             className="flex items-start gap-4 p-6 bg-[var(--text-light)] rounded-2xl shadow-lg hover:shadow-2xl transition-all mt-2"
             whileHover={{ translateY: -4 }}
@@ -215,7 +211,6 @@ export default function ContactoSection() {
           </motion.div>
         </div>
 
-        {/* RIGHT COLUMN: other contacts + map */}
         <div className="space-y-8">
           <h2 className="text-2xl font-bold text-[var(--blue-700)]">
             Contacto Directo
@@ -235,6 +230,13 @@ export default function ContactoSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[var(--blue-700)] hover:underline"
+                    onClick={() =>
+                      trackEvent("whatsapp_click", {
+                        source: "Contacto Page - Card",
+                        phone: "34684418499",
+                        timestamp: new Date().toISOString(),
+                      })
+                    }
                   >
                     +34 684 418 499
                   </a>
@@ -277,7 +279,6 @@ export default function ContactoSection() {
             ))}
           </div>
 
-          {/* Embedded Map */}
           <motion.div
             className="relative z-20 w-full h-64 rounded-3xl overflow-hidden shadow-lg"
             initial="hidden"

@@ -7,6 +7,7 @@ import WhatsAppButton from "@/components/WhatsappButton";
 import CookieConsent from "@/components/CookieConsent";
 import { Poppins } from 'next/font/google';
 import FloatingCalculatorButton from "@/components/FloatingCalculatorButton";
+import { TrackingProvider } from "@/app/context/TrackingContext";
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -42,14 +43,16 @@ export default function RootLayout({
 
       </head>
       <body>
-        <Header />
-        <main>
-          {children}
-          <FloatingCalculatorButton />
-          <WhatsAppButton />
-        </main>
-        <Footer />
-        <CookieConsent /> 
+        <TrackingProvider>
+          <Header />
+          <main>
+            {children}
+            <FloatingCalculatorButton />
+            <WhatsAppButton />
+          </main>
+          <Footer />
+          <CookieConsent />
+        </TrackingProvider>
       </body>
     </html>
   );

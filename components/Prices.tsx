@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import "@/app/styles/quien-somos.css";
+import { useTracking } from "@/app/context/TrackingContext";
 
 const services = [
   {
@@ -67,6 +68,7 @@ const services = [
 
 export default function Prices() {
   const [loaded, setLoaded] = useState(false);
+  const { trackEvent } = useTracking(); 
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 150);
@@ -154,6 +156,15 @@ export default function Prices() {
 
               <a
                 href="https://wa.me/34684418499"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() =>
+                  trackEvent("whatsapp_click", {
+                    source: `Prices Section - ${service.title}`,
+                    phone: "34684418499",
+                    timestamp: new Date().toISOString(),
+                  })
+                }
                 className="mt-auto inline-block w-full text-center bg-blue-600 text-white font-semibold py-4 rounded-full shadow hover:bg-blue-700 transition-colors duration-300"
               >
                 Solicitar Servicio

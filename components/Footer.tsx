@@ -9,8 +9,20 @@ import {
   FaPhoneAlt,
 } from 'react-icons/fa';
 import "@/app/styles/quien-somos.css";
+import { useTracking } from "@/app/context/TrackingContext";
 
 export default function Footer() {
+
+  const { trackEvent } = useTracking(); 
+
+  const handleWhatsAppClick = (source: string) => {
+    trackEvent("whatsapp_click", {
+      source,
+      phone: "34684418499",
+      timestamp: new Date().toISOString(),
+    });
+  };
+
   return (
     <footer className="relative bg-gradient-to-br from-[var(--blue-700)] to-[var(--blue-900)] text-[var(--text-light)]">
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
@@ -70,6 +82,7 @@ export default function Footer() {
                 href="https://wa.me/34684418499"
                 target="_blank"
                 className="hover:text-[var(--blue-100)] transition-colors"
+                onClick={() => handleWhatsAppClick("Footer - Text Link")}
               >
                 +34 684 418 499
               </Link>
@@ -94,7 +107,11 @@ export default function Footer() {
           </ul>
           <h4 className="text-lg font-bold mb-2">Síguenos</h4>
           <div className="flex items-center gap-4">
-            <Link href="https://wa.me/34684418499" target="_blank">
+            <Link
+              href="https://wa.me/34684418499"
+              target="_blank"
+              onClick={() => handleWhatsAppClick("Footer - Icon")}
+            >
               <FaWhatsapp className="w-6 h-6 hover:text-[var(--blue-100)] transition-colors" />
             </Link>
           </div>
