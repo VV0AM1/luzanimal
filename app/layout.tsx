@@ -34,14 +34,12 @@ export default function RootLayout({
       <head>
         <meta name="google-site-verification" content="b69x1eLWnGO7cMYp3OZ9TX7XVYuyGO4_Wz2omaVvJJc" />
         
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="shortcut icon" href="/favicon.png" />
 
-        {/* Manifest file (optional but helps) */}
-        <link rel="manifest" href="/manifest.json" />
       </head>
       <body>
         <Header />
