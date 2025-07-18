@@ -1,4 +1,3 @@
-"use client";
 
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -26,7 +25,6 @@ const extras = [
 export default function IndividualSection() {
   return (
     <main className="bg-[var(--blue-50)] text-[var(--text-main)] overflow-hidden relative">
-      {/* Decorative circle now safely contained */}
       <div className="pointer-events-none absolute -top-20 -right-20 w-72 h-72 rounded-full bg-[var(--blue-300)] opacity-20 z-0" />
 
       <motion.section
