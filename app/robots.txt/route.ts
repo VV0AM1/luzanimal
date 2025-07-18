@@ -3,7 +3,7 @@ export async function GET() {
     `User-agent: *
 Allow: /
 Allow: /favicon.ico
-Allow: /logo.png
+Allow: /favicon.png
 Sitemap: https://www.luzanimal.com/sitemap.xml
 `,
     {
