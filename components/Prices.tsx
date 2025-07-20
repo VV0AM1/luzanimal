@@ -167,13 +167,13 @@ export default function Prices() {
               </div>
 
               <a
-                href="https://wa.me/34684418499"
+                href="https://wa.me/34684416567"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() =>
                   trackEvent("whatsapp_click", {
                     source: `Prices Section - ${service.title}`,
-                    phone: "34684418499",
+                    phone: "34684416567",
                     timestamp: new Date().toISOString(),
                   })
                 }

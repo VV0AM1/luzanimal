@@ -81,13 +81,13 @@ export default function PetCrematoriumInfo() {
 
         <div className="mt-8">
           <a
-            href="https://wa.me/34684418499"
+            href="https://wa.me/34684416567"
             target="_blank"
             rel="noopener noreferrer"
             onClick={handleWhatsAppClick}
             className="inline-flex items-center gap-3 bg-[var(--blue-300)] hover:bg-[var(--blue-100)] text-[var(--text-main)] font-semibold px-6 py-3 text-base rounded-full shadow-lg transition"
           >
-            <FaWhatsapp className="w-5 h-5" /> +34 684 418 499
+            <FaWhatsapp className="w-5 h-5" /> +34 684 41 65 67
           </a>
         </div>
       </div>

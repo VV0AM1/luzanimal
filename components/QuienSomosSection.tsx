@@ -211,11 +211,11 @@ export default function QuienSomosSection() {
           acompañarte en este momento tan importante.
         </p>
         <motion.a
-          href="https://wa.me/34684418499"
+          href="https://wa.me/34684416567"
           onClick={() =>
             trackEvent("whatsapp_click", {
               source: "QuienSomosSection - CTA",
-              phone: "34684418499",
+              phone: "34684416567",
               timestamp: new Date().toISOString(),
             })
           }

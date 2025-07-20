@@ -41,7 +41,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8 pt-16">
         <div>
-          <h3 className="text-lg font-bold mb-2">Almascotas S.L.</h3>
+          <h3 className="text-lg font-bold mb-2">Luz Animal S.L.</h3>
           <p className="text-xs mb-1 opacity-70">N.I.F.: B10540581</p>
           <p className="text-xs opacity-70">
             Pompas fúnebres y actividades relacionadas
@@ -79,7 +79,7 @@ export default function Footer() {
             <li className="flex items-center gap-2">
               <FaWhatsapp className="text-green-400 w-5 h-5" />
               <Link
-                href="https://wa.me/34684418499"
+                href="https://wa.me/34684416567"
                 target="_blank"
                 className="hover:text-[var(--blue-100)] transition-colors"
                 onClick={() => handleWhatsAppClick("Footer - Text Link")}
@@ -108,7 +108,7 @@ export default function Footer() {
           <h4 className="text-lg font-bold mb-2">Síguenos</h4>
           <div className="flex items-center gap-4">
             <Link
-              href="https://wa.me/34684418499"
+              href="https://wa.me/34684416567"
               target="_blank"
               onClick={() => handleWhatsAppClick("Footer - Icon")}
             >
