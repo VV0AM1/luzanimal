@@ -92,7 +92,7 @@ export default function ContactoSection() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.7, duration: 0.6 }}
       >
-        Luz Animal S.L. ofrece cremación profesional de mascotas en Barcelona y Granollers, 
+        Luz Animal ofrece cremación profesional de mascotas en Barcelona y Granollers, 
         garantizando un trámite respetuoso, atención 24/7 y soluciones personalizadas para 
         cada familia. Rellena el formulario para recibir un presupuesto inmediato.
       </motion.p>

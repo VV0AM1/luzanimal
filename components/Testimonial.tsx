@@ -29,17 +29,19 @@ export default function Testimonials() {
   return (
     <section
       id="testimonios"
-      className="relative bg-[var(--blue-50)] py-20 px-6 overflow-hidden"
+      className="relative bg-[var(--blue-50)] py-24 px-6 overflow-hidden"
     >
       <FaPaw className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[var(--blue-100)] text-[20rem] opacity-10 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-extrabold text-[var(--text-main)] mb-4 tracking-tight">
-          Reseñas de Clientes
+        <h2 className="text-5xl font-extrabold text-[var(--text-main)] mb-6 tracking-tight">
+          Reseñas de Nuestros Clientes
         </h2>
-        <p className="text-[var(--blue-700)] mb-12 max-w-2xl mx-auto">
-          Conoce la experiencia de quienes confiaron en Luz Animal para despedir
-          a sus mascotas con respeto y cariño.
+
+        <div className="w-24 h-1 bg-[var(--blue-500)] mx-auto mb-6 rounded-full" />
+
+        <p className="text-[var(--blue-700)] text-lg md:text-xl mb-14 max-w-2xl mx-auto leading-relaxed">
+          Conoce cómo hemos acompañado a familias en momentos delicados con profesionalismo, empatía y respeto. Sus palabras son nuestro mayor orgullo.
         </p>
 
         <motion.div
@@ -54,7 +56,7 @@ export default function Testimonials() {
           {testimonials.map(({ name, comment, rating }, i) => (
             <motion.blockquote
               key={i}
-              className="relative bg-white rounded-3xl p-8 pt-4 shadow-lg transition-transform duration-300 hover:shadow-2xl hover:-translate-y-2 hover:rotate-[0.5deg] border-t-4 border-[var(--blue-500)]"
+              className="relative bg-white rounded-3xl p-8 pt-4 shadow-lg transition-transform duration-300 hover:shadow-xl hover:-translate-y-2 hover:scale-[1.01] border-t-4 border-[var(--blue-500)]"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -64,7 +66,7 @@ export default function Testimonials() {
               <p className="text-gray-800 mt-8 mb-6 leading-relaxed text-base">
                 “{comment}”
               </p>
-              <div className="flex items-center justify-center mb-4">
+              <div className="flex items-center justify-center mb-4 gap-1">
                 {[...Array(rating)].map((_, idx) => (
                   <FaStar
                     key={idx}
@@ -78,6 +80,8 @@ export default function Testimonials() {
             </motion.blockquote>
           ))}
         </motion.div>
+
+
       </div>
     </section>
   );

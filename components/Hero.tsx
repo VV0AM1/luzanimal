@@ -20,8 +20,8 @@ export default function Hero() {
         transition={{
           duration: 8,
           repeat: Infinity,
-          repeatType: 'reverse',
-          ease: 'easeInOut',
+          repeatType: "reverse",
+          ease: "easeInOut",
         }}
       />
       <motion.div
@@ -31,8 +31,8 @@ export default function Hero() {
         transition={{
           duration: 8,
           repeat: Infinity,
-          repeatType: 'reverse',
-          ease: 'easeInOut',
+          repeatType: "reverse",
+          ease: "easeInOut",
         }}
       />
 
@@ -54,18 +54,25 @@ export default function Hero() {
       ))}
 
       <motion.div
-        className="relative z-20 flex flex-col items-center text-center px-4 max-w-2xl mx-auto"
+        className="relative z-20 flex flex-col items-center text-center px-4 max-w-4xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 1 }}
       >
-        <h1 className="text-4xl md:text-6xl font-extrabold text-[var(--text-light)] drop-shadow-lg">
+        <h1 className="text-5xl md:text-6xl font-extrabold text-[var(--text-light)] drop-shadow-lg leading-tight">
           Un Adiós con Amor y Respeto
         </h1>
         <p className="mt-4 text-lg md:text-xl text-[var(--blue-100)] leading-relaxed">
-          Cremación de mascotas en Barcelona con un cuidado cercano, profesional y completamente
-          personalizado para tu mejor amigo.
+          Cremación de mascotas en Barcelona con atención cercana, profesional y totalmente personalizada.
         </p>
+        <p className="mt-2 text-md md:text-lg text-[var(--blue-100)] max-w-xl leading-relaxed">
+          Acompañamos a familias en el momento más delicado con empatía, transparencia y el máximo cuidado. Tu mascota merece una despedida digna.
+        </p>
+
+
+        <div className="mt-4 text-md text-[var(--blue-200)] italic">
+          Más de 500 familias han confiado en nosotros
+        </div>
 
         <div className="mt-8 flex flex-col sm:flex-row gap-4">
           <Link
@@ -83,7 +90,7 @@ export default function Hero() {
         </div>
       </motion.div>
 
-=      <motion.div
+      <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-[var(--text-light)]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
