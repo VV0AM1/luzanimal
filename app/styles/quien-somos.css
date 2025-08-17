@@ -3,9 +3,16 @@
   --blue-100: #C6E8FF;
   --blue-300: #8CCEFF;
   --blue-500: #58B0FF;
-  --blue-700: #1e3a8a; 
-  --text-main: #1f2937;
-  --text-light: #ffffff;
+  --blue-600: #2a4fa3; 
+  --blue-700: #193379;
+  --blue-800: #0e1c42; 
+  --blue-900: #070d26; 
+
+  --text-main: #1f2937;   
+  --text-dark: #111827;   
+  --text-muted: #4b5563;  
+  --text-light: #ffffff;  
+  --text-accent: var(--blue-700);
 }
 
 @keyframes fadeIn {
@@ -62,4 +69,12 @@ select:focus {
 option {
   background-color: var(--blue-50);
   color: var(--text-main);
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE & Edge */
+  scrollbar-width: none;     /* Firefox */
 }

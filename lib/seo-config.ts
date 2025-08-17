@@ -1,7 +1,7 @@
 export const siteMetadata = {
-  title: "Cremación de Mascotas en Barcelona | Servicio Compasivo",
+  title: "Incineracion de Mascotas en Barcelona | Luz Animal",
   description:
-    "Ofrecemos servicios de cremación para mascotas en Barcelona con empatía, respeto y atención personalizada. Llámanos hoy para más información.",
+    "Incineracion de mascotas en Barcelona con respeto y empatía. Servicio 24h con recogida a domicilio y certificado oficial. Llámanos hoy.",
   keywords: [
     "cremación de mascotas",
     "incineracion mascotas Barcelona",
@@ -47,4 +47,21 @@ export const siteMetadata = {
   url: "https://www.luzanimal.com",
   locale: "es_ES",
   siteName: "Luz Animal",
+  canonical: "https://www.luzanimal.com",
+};
+
+export const openGraph = {
+  type: "website",
+  url: siteMetadata.url,
+  title: siteMetadata.title,
+  description: siteMetadata.description,
+  images: [
+    {
+      url: `${siteMetadata.url}/og.jpg`,
+      width: 1200,
+      height: 630,
+      alt: siteMetadata.title,
+    },
+  ],
+  site_name: siteMetadata.siteName,
 };

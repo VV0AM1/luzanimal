@@ -1,108 +1,149 @@
 "use client";
 
-import { FaMapMarkerAlt, FaPhoneAlt, FaApple, FaGoogle, FaWhatsapp, FaClock, FaHandsHelping } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { FaMapMarkerAlt, FaPhoneAlt, FaApple, FaGoogle, FaWhatsapp, FaClock, FaHandsHelping } from "react-icons/fa";
+import { motion } from "framer-motion";
+import Link from "next/link";
 import "@/app/styles/quien-somos.css";
 import { useTracking } from "@/app/context/TrackingContext";
 
 export default function PetCrematoriumInfo() {
+  const { trackEvent } = useTracking();
 
-  const { trackEvent } = useTracking(); 
+  const PHONE_E164 = "34684416567"; // keep one canonical number
+  const PHONE_DISPLAY = "+34 684 41 65 67";
 
-  const handleWhatsAppClick = () => {
+  const onWhatsApp = () =>
     trackEvent("whatsapp_click", {
       source: "PetCrematoriumInfo Section",
-      phone: "34684418499",
+      phone: PHONE_E164,
       timestamp: new Date().toISOString(),
     });
-  };
+
+  const onMapClick = (provider: "apple" | "google") =>
+    trackEvent("map_click", {
+      provider,
+      source: "PetCrematoriumInfo Section",
+      timestamp: new Date().toISOString(),
+    });
 
   return (
     <section
       id="contacto"
-      className="relative overflow-hidden bg-gradient-to-br from-[var(--blue-700)] to-[var(--blue-500)] text-[var(--text-light)] py-16 px-6 md:px-12"
+      aria-labelledby="contacto-title"
+      className="relative overflow-hidden py-20 px-6 md:px-12"
     >
-      <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-[var(--blue-300)] opacity-10" />
-      <div className="absolute -bottom-16 -right-16 w-96 h-96 rounded-full bg-[var(--blue-300)] opacity-10" />
+      {/* Textured background with stronger contrast */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#101e44] via-[#192b66] to-[#1b388a]" />
+      <div className="pointer-events-none absolute inset-0 bg-[url('/images/wave-mesh.jpg')] bg-cover bg-center opacity-[0.05]" />
+
+      {/* soft glows */}
+      <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-blue-400/20 blur-3xl" />
+      <div className="absolute -bottom-20 -right-20 w-[28rem] h-[28rem] rounded-full bg-blue-500/25 blur-3xl" />
 
       <motion.div
-        className="max-w-[90rem] mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10"
+        className="relative z-10 mx-auto grid max-w-[90rem] md:grid-cols-2 gap-12 items-stretch"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
       >
-      <div className="space-y-6 text-lg leading-loose">
-        <h2 className="text-4xl md:text-5xl font-extrabold">
-          Tanatorio de Mascotas en Barcelona
-        </h2>
-        <p>
-          En <strong>Luz Animal</strong>, ofrecemos un entorno cálido, respetuoso y profesional para que puedas despedirte de tu compañero con total tranquilidad. Nuestro tanatorio está ubicado en <strong>Granollers</strong>, y ha sido diseñado para crear una atmósfera de paz y acompañamiento.
-        </p>
-        <p>
-          Nos comprometemos a estar a tu lado desde el primer momento. Nuestro equipo trabaja con empatía y rapidez para ofrecer un servicio personalizado, adaptado a tus necesidades emocionales y logísticas.
-        </p>
-
-        <ul className="space-y-3">
-          <li className="flex items-start gap-3">
-            <FaHandsHelping className="mt-1 text-[var(--blue-300)] w-5 h-5" />
-            Acompañamiento emocional 24/7 por profesionales especializados en duelo animal
-          </li>
-          <li className="flex items-start gap-3">
-            <FaClock className="mt-1 text-[var(--blue-300)] w-5 h-5" />
-            Servicio urgente de recogida en clínicas veterinarias y domicilios particulares
-          </li>
-          <li className="flex items-start gap-3">
-            <FaMapMarkerAlt className="mt-1 text-[var(--blue-300)] w-5 h-5" />
-            Instalaciones accesibles, privadas y certificadas en Carrer de Severo Ochoa 43, Granollers
-          </li>
-        </ul>
-
-        <p>
-          Puedes encontrarnos fácilmente en Apple Maps o Google Maps, o contactarnos directamente por WhatsApp. Estamos aquí para ayudarte en cada paso.
-        </p>
-
-        <div className="mt-8 flex flex-col sm:flex-row gap-4">
-          <a
-            href="https://maps.apple.com/?address=Carrer%20de%20Severo%20Ochoa,%2043,%20Granollers"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-[var(--blue-900)] hover:bg-[var(--blue-800)] px-5 py-3 text-base rounded-lg transition"
+        {/* Info panel */}
+        <div className="text-[var(--text-light)]">
+          <h2
+            id="contacto-title"
+            className="text-3xl md:text-5xl font-extrabold leading-tight text-white"
           >
-            <FaApple /> Apple Maps
-          </a>
-          <a
-            href="https://maps.google.com/?q=Carrer+de+Severo+Ochoa,+43,+Granollers"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-[var(--blue-900)] hover:bg-[var(--blue-800)] px-5 py-3 text-base rounded-lg transition"
-          >
-            <FaGoogle /> Google Maps
-          </a>
+            Tanatorio y Incineracion de Mascotas en Barcelona (Granollers)
+          </h2>
+
+          <p className="mt-5 text-blue-100 text-lg leading-relaxed">
+            En <strong>Luz Animal</strong> te acompañamos con empatía y profesionalidad para que
+            puedas despedirte con calma. Nuestro centro en <strong>Granollers</strong> ofrece un entorno
+            íntimo y respetuoso, pensado para tu tranquilidad.
+          </p>
+
+          <ul className="mt-6 space-y-3 text-blue-100">
+            <li className="flex items-start gap-3">
+              <FaHandsHelping className="mt-1 w-5 h-5 text-blue-200" />
+              Acompañamiento emocional 24/7 por profesionales en duelo animal.
+            </li>
+            <li className="flex items-start gap-3">
+              <FaClock className="mt-1 w-5 h-5 text-blue-200" />
+              Servicio urgente de recogida en clínicas y domicilios.
+            </li>
+            <li className="flex items-start gap-3">
+              <FaMapMarkerAlt className="mt-1 w-5 h-5 text-blue-200" />
+              Instalaciones privadas y certificadas en Granollers.
+            </li>
+          </ul>
+
+          <div className="mt-8 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)] p-6">
+            <address className="not-italic text-blue-50">
+              <div className="flex items-center gap-2">
+                <FaMapMarkerAlt className="w-4 h-4 text-blue-200" />
+                <span>Carrer de Severo Ochoa, 43 · 08403 Granollers, Barcelona</span>
+              </div>
+              <div className="mt-2 flex items-center gap-2">
+                <FaPhoneAlt className="w-4 h-4 text-blue-200" />
+                <a href={`tel:+${PHONE_E164}`} className="underline decoration-blue-300 underline-offset-4">
+                  {PHONE_DISPLAY}
+                </a>
+              </div>
+              <div className="mt-2 flex items-center gap-2">
+                <FaClock className="w-4 h-4 text-blue-200" />
+                <span>Atención 24/7</span>
+              </div>
+            </address>
+
+            <div className="mt-5 flex flex-col sm:flex-row gap-3">
+              <a
+                href="https://maps.apple.com/?address=Carrer%20de%20Severo%20Ochoa,%2043,%20Granollers"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => onMapClick("apple")}
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-white/15 hover:bg-white/25 text-white px-4 py-3 transition shadow"
+                aria-label="Abrir Apple Maps"
+                title="Abrir en Apple Maps"
+              >
+                <FaApple /> Apple Maps
+              </a>
+              <a
+                href="https://maps.google.com/?q=Carrer+de+Severo+Ochoa,+43,+Granollers"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => onMapClick("google")}
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-white/15 hover:bg-white/25 text-white px-4 py-3 transition shadow"
+                aria-label="Abrir Google Maps"
+                title="Abrir en Google Maps"
+              >
+                <FaGoogle /> Google Maps
+              </a>
+              <a
+                href={`https://wa.me/${PHONE_E164}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onWhatsApp}
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-green-500 to-green-400 hover:from-green-500/90 hover:to-green-400/90 text-white px-4 py-3 transition shadow-lg"
+                aria-label="Contactar por WhatsApp"
+                title="Contactar por WhatsApp"
+              >
+                <FaWhatsapp className="w-5 h-5" /> {PHONE_DISPLAY}
+              </a>
+            </div>
+          </div>
         </div>
-
-        <div className="mt-8">
-          <a
-            href="https://wa.me/34684416567"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={handleWhatsAppClick}
-            className="inline-flex items-center gap-3 bg-[var(--blue-300)] hover:bg-[var(--blue-100)] text-[var(--text-main)] font-semibold px-6 py-3 text-base rounded-full shadow-lg transition"
-          >
-            <FaWhatsapp className="w-5 h-5" /> +34 684 41 65 67
-          </a>
-        </div>
-      </div>
 
         <motion.div
-          className="w-full h-80 md:h-[28rem] rounded-2xl overflow-hidden shadow-2xl"
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.4 }}
+          className="relative rounded-2xl overflow-hidden shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)] border border-white/20 bg-white/5 backdrop-blur-sm"
+          whileHover={{ scale: 1.01 }}
+          transition={{ duration: 0.3 }}
         >
           <iframe
+            title="Ubicación Luz Animal Granollers en Google Maps"
             src="https://maps.google.com/maps?q=Carrer%20de%20Severo%20Ochoa%2C%2043%2C%20Granollers&output=embed"
-            className="w-full h-full border-0"
-            allowFullScreen
+            className="w-full h-full border-0 block"
             loading="lazy"
+            allowFullScreen
           />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-6 bg-gradient-to-b from-black/30 to-transparent" />
         </motion.div>
       </motion.div>
     </section>

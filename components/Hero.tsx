@@ -3,87 +3,74 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaPaw, FaChevronDown } from "react-icons/fa";
+import Image from "next/image";
 import "@/app/styles/quien-somos.css";
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative h-screen bg-[url('/images/pet_bg.jpg')] bg-cover bg-center overflow-hidden flex justify-center items-center"
+      className="relative h-screen flex justify-center items-center overflow-hidden bg-gray-900"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/40 to-transparent z-10" />
-
-      <motion.div
-        className="absolute -top-32 -left-32 w-96 h-96 bg-[var(--blue-300)] opacity-20 rounded-full"
-        initial={{ scale: 0.8, opacity: 0.1 }}
-        animate={{ scale: 1.2, opacity: 0.2 }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut",
-        }}
+      <Image
+        src="/images/pet_bg.jpg"
+        alt="Cremación de mascotas en Barcelona - Luz Animal"
+        fill
+        className="object-cover object-center"
+        priority
       />
-      <motion.div
-        className="absolute bottom-[-10%] right-[-5%] w-72 h-72 bg-[var(--blue-700)] opacity-10 rounded-full"
-        initial={{ scale: 1.1, opacity: 0.05 }}
-        animate={{ scale: 0.9, opacity: 0.15 }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut",
-        }}
-      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/20 z-10" />
 
       {[
-        { top: "10%", left: "20%", delay: 0 },
-        { top: "30%", left: "75%", delay: 2 },
-        { top: "65%", left: "40%", delay: 4 },
+        { top: "15%", left: "20%", delay: 0 },
+        { top: "35%", left: "75%", delay: 2 },
+        { top: "70%", left: "45%", delay: 4 },
       ].map((pos, i) => (
         <motion.div
           key={i}
-          className="absolute"
+          className="absolute z-10"
           style={{ top: pos.top, left: pos.left }}
           initial={{ opacity: 0, y: 0 }}
-          animate={{ opacity: [0, 0.3, 0], y: [0, -20, 0] }}
-          transition={{ duration: 6, repeat: Infinity, delay: pos.delay }}
+          animate={{ opacity: [0, 0.2, 0], y: [0, -15, 0] }}
+          transition={{ duration: 8, repeat: Infinity, delay: pos.delay }}
         >
-          <FaPaw className="w-12 h-12 text-[var(--blue-100)]" />
+          <FaPaw className="w-10 h-10 text-[var(--blue-200)] opacity-40" />
         </motion.div>
       ))}
 
       <motion.div
-        className="relative z-20 flex flex-col items-center text-center px-4 max-w-4xl mx-auto"
+        className="relative z-20 flex flex-col items-center text-center px-6 max-w-3xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 1 }}
       >
-        <h1 className="text-5xl md:text-6xl font-extrabold text-[var(--text-light)] drop-shadow-lg leading-tight">
-          Un Adiós con Amor y Respeto
+        <h1 className="text-4xl md:text-6xl font-extrabold text-white drop-shadow-lg leading-tight">
+          Incineracion de Mascotas en Barcelona
         </h1>
-        <p className="mt-4 text-lg md:text-xl text-[var(--blue-100)] leading-relaxed">
-          Cremación de mascotas en Barcelona con atención cercana, profesional y totalmente personalizada.
-        </p>
-        <p className="mt-2 text-md md:text-lg text-[var(--blue-100)] max-w-xl leading-relaxed">
-          Acompañamos a familias en el momento más delicado con empatía, transparencia y el máximo cuidado. Tu mascota merece una despedida digna.
+        <h2 className="mt-2 text-xl md:text-2xl text-blue-100 font-medium">
+          Un adiós con amor, respeto y acompañamiento 24h
+        </h2>
+
+        <p className="mt-4 text-lg md:text-xl text-blue-100 leading-relaxed">
+          Acompañamos a familias en el momento más delicado con empatía,
+          transparencia y el máximo cuidado. Tu mascota merece una despedida
+          digna y personalizada.
         </p>
 
-
-        <div className="mt-4 text-md text-[var(--blue-200)] italic">
-          Más de 500 familias han confiado en nosotros
+        <div className="mt-4 text-base text-blue-200 italic">
+          Más de 500 familias ya confiaron en nosotros
         </div>
 
         <div className="mt-8 flex flex-col sm:flex-row gap-4">
           <Link
             href="/contacto"
-            className="inline-block bg-[var(--blue-500)] hover:bg-[var(--blue-300)] text-[var(--text-light)] px-8 py-3 rounded-full font-semibold shadow-lg transition"
+            className="inline-block bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-full font-semibold shadow-md transition"
           >
-            Contáctanos Ahora
+            Contáctanos Ahora – Servicio 24h
           </Link>
           <Link
             href="/quien-somos"
-            className="inline-block border-2 border-[var(--blue-500)] hover:bg-[var(--blue-500)] hover:text-[var(--text-light)] text-[var(--blue-500)] px-8 py-3 rounded-full font-semibold transition"
+            className="inline-block border-2 border-blue-500 hover:bg-blue-500 hover:text-white text-blue-200 px-8 py-3 rounded-full font-semibold transition"
           >
             Conócenos
           </Link>
@@ -91,12 +78,12 @@ export default function Hero() {
       </motion.div>
 
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-[var(--text-light)]"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white z-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
       >
-        <FaChevronDown size={24} className="animate-bounce" />
+        <FaChevronDown size={28} className="animate-bounce opacity-70" />
       </motion.div>
     </section>
   );
