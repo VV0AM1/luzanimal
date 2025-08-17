@@ -239,7 +239,6 @@ export default function Header() {
                 </Link>
               </li>
 
-              {/* Servicios accordion */}
               <li>
                 <button
                   onClick={() => setServicesOpen((o) => !o)}
@@ -248,7 +247,7 @@ export default function Header() {
                   className="w-full flex items-center justify-between px-3 py-3 rounded-lg hover:bg-blue-50"
                 >
                   <span className="flex items-center gap-3">
-                    <Package className="w-5 h-5" /> Servicios
+                    <Package className="w-5 h-5" /> <Link onClick={() => setMobileOpen(false)} href="/servicios">Servicios</Link>
                   </span>
                   <ChevronDown className={`w-5 h-5 transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
                 </button>
