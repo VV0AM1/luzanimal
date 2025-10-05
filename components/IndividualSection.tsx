@@ -1,20 +1,24 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
-import "@/app/styles/quien-somos.css";
+import { motion, useReducedMotion } from "framer-motion";
 import type { Variants } from "framer-motion";
+import {
+  FaBoxOpen,
+  FaCertificate,
+  FaShieldAlt,
+  FaDoorClosed,
+  FaHandsHelping,
+} from "react-icons/fa";
+import Script from "next/script";
+import "@/app/styles/quien-somos.css";
 
 const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
-  },
+  hidden: { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
 };
 
-const prices = [
+const PRICES = [
   { weight: "Hasta 3 kg", price: "230 €" },
   { weight: "3 – 10 kg", price: "245 €" },
   { weight: "10 – 25 kg", price: "260 €" },
@@ -22,163 +26,261 @@ const prices = [
   { weight: "40+ kg", price: "290 €" },
 ];
 
-const extras = [
+const EXTRAS = [
   "Entrega a domicilio: desde 20 €",
   "Huella en escayola: + 30 €",
-  "Ceremonia fin de semana: + 20 €",
+  "Ceremonia fin de semana/festivo: + 20 €",
 ];
 
+const FEATURES = [
+  {
+    icon: <FaBoxOpen />,
+    title: "Urna incluida",
+    text: "Entrega en urna elegante con etiquetado.",
+  },
+  {
+    icon: <FaCertificate />,
+    title: "Certificado oficial",
+    text: "Documento con fecha y datos identificativos.",
+  },
+  {
+    icon: <FaShieldAlt />,
+    title: "Trazabilidad exclusiva",
+    text: "Ciclo dedicado solo a tu mascota.",
+  },
+  {
+    icon: <FaDoorClosed />,
+    title: "Privacidad total",
+    text: "Acceso opcional a sala de velatorio.",
+  },
+  {
+    icon: <FaHandsHelping />,
+    title: "Acompañamiento",
+    text: "Apoyo emocional 24/7 por profesionales.",
+  },
+];
+
+const SITE_URL = "https://www.luzanimal.com";
+
 export default function IndividualSection() {
+  const reduce = useReducedMotion();
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Inicio", "item": `${SITE_URL}/` },
+          { "@type": "ListItem", "position": 2, "name": "Servicios", "item": `${SITE_URL}/servicios` },
+          { "@type": "ListItem", "position": 3, "name": "Incineración individual", "item": `${SITE_URL}/servicios/incineracion-individual` },
+        ],
+      },
+      {
+        "@type": "Service",
+        "name": "Incineración individual de mascotas",
+        "serviceType": "Cremación individual",
+        "areaServed": ["Barcelona", "Granollers", "Catalunya"],
+        "provider": { "@type": "LocalBusiness", "name": "Luz Animal" },
+        "description":
+          "Servicio íntimo con trazabilidad exclusiva y devolución de cenizas en urna con certificado.",
+        "offers": PRICES.map((p) => ({
+          "@type": "Offer",
+          "price": p.price.replace(/\s?€/, ""),
+          "priceCurrency": "EUR",
+          "category": p.weight,
+          "url": `${SITE_URL}/servicios/incineracion-individual`,
+        })),
+      },
+    ],
+  };
+
   return (
     <main className="bg-[var(--blue-50)] text-[var(--text-main)] relative overflow-hidden">
-      {/* Decorative bubble */}
       <div className="pointer-events-none absolute -top-20 -right-20 w-72 h-72 rounded-full bg-[var(--blue-300)] opacity-20 blur-2xl" />
 
-      {/* Hero */}
       <motion.section
-        className="relative h-[38rem] md:h-[60vh] flex items-center justify-center 
-                   bg-[url('/images/individual-header.jpg')] bg-cover bg-center
-                   shadow-[inset_0_0_120px_rgba(0,0,0,0.7)]"
+        className="relative h-[36rem] md:h-[60vh] flex items-center justify-center overflow-hidden"
         initial="hidden"
         animate="visible"
         variants={fadeInUp}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-transparent" />
+        <Image
+          src="/images/individual-header.jpg"
+          alt="Incineración individual en Luz Animal"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/55 to-black/25" />
         <div className="relative z-10 text-center px-6 max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-[var(--text-light)] drop-shadow-xl mb-4">
-            Incineración Individual
+          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)] mb-3">
+            Incineración individual
           </h1>
-          <p className="text-lg md:text-xl text-[var(--blue-100)] opacity-95 mb-4 leading-relaxed">
-            Un <span className="font-semibold text-[var(--blue-300)]">tributo único</span>, íntimo y respetuoso para tu mejor amigo. 
-            Garantiza que tu mascota sea cremada de manera exclusiva, devolviendo sus cenizas en una urna elegante y personalizada.
-          </p>
-          <p className="text-base md:text-lg text-[var(--blue-100)] opacity-90 max-w-xl mx-auto leading-relaxed">
-            Pensado para quienes desean honrar a su compañero con el máximo respeto, privacidad y un recuerdo eterno. 
-            Puedes asistir al proceso y compartir un último adiós en nuestras instalaciones.
+          <p className="text-lg md:text-xl text-white/95 leading-relaxed">
+            Un <span className="font-semibold text-[var(--blue-200)]">tributo único</span>, íntimo y respetuoso.{" "}
+            Cremación exclusiva con devolución de cenizas en{" "}
+            <strong>urna personalizada</strong> y <strong>certificado oficial</strong>.
           </p>
         </div>
       </motion.section>
 
-      {/* Divider */}
-      <div className="w-32 mx-auto my-12 border-t-4 border-gradient-to-r from-[var(--blue-500)] to-[var(--blue-300)] rounded-full" />
+      <div className="relative flex justify-center my-10 md:my-12">
+        <div className="w-24 border-t-4 border-[var(--blue-500)]" />
+        <div className="absolute top-1/2 -translate-y-1/2 bg-[var(--blue-500)] w-3 h-3 rounded-full" />
+      </div>
 
-      {/* Why Choose */}
       <motion.section
-        className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center"
+        className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-start"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.25 }}
         variants={fadeInUp}
       >
-        <div className="space-y-5">
-          <h2 className="text-3xl font-bold text-[var(--blue-700)]">
-            Por qué elegir la <span className="text-[var(--blue-500)]">incineración individual</span>
+        <div className="space-y-6 min-w-0">
+          <h2 className="text-3xl md:text-4xl font-extrabold leading-tight tracking-tight break-words">
+            ¿Por qué elegir la{" "}
+            <span className="bg-gradient-to-r from-[var(--blue-700)] to-[var(--blue-500)] bg-clip-text text-transparent">
+              incineración individual
+            </span>
             ?
           </h2>
-          <p className="leading-relaxed opacity-90">
-            La <strong>incineración individual</strong> es nuestra opción más personal. Tu mascota es tratada con cariño
-            y dignidad en todo momento, y recibirás sus cenizas para conservarlas como recuerdo.
+
+          <p className="text-blue-900/90 leading-relaxed">
+            La opción más personal: tratamos a tu compañero con el máximo cariño y dignidad en un
+            ciclo <strong>exclusivo</strong>. Recibirás sus cenizas en una{" "}
+            <strong>urna de calidad</strong> con su certificado.
           </p>
-          <p className="leading-relaxed opacity-90">
-            Este servicio es ideal para quienes desean un cierre emocional más íntimo y tangible.
-          </p>
-          <ul className="list-disc pl-6 space-y-2 opacity-90">
-            {[
-              "Urna personalizada de alta calidad",
-              "Certificado oficial de cremación",
-              "Carta de condolencia firmada por nuestro equipo",
-              "Acceso opcional al velatorio en sala privada",
-            ].map((item, i) => (
-              <li key={i}>{item}</li>
-            ))}
-          </ul>
+
+          <div className="rounded-3xl bg-white/70 backdrop-blur-sm ring-1 ring-blue-100 p-4 sm:p-5">
+            <ul
+              className="
+                grid items-stretch min-w-0
+                [grid-template-columns:repeat(auto-fit,minmax(190px,1fr))]
+                gap-3 sm:gap-4
+              "
+            >
+              {FEATURES.map((f) => (
+                <li key={f.title} className="h-full w-full min-w-0">
+                  <div
+                    className="
+                      h-full min-w-0 grid grid-rows-[auto_auto_1fr]
+                      rounded-2xl border border-blue-100 bg-white p-4
+                      shadow-sm hover:shadow-md transition
+                    "
+                  >
+                    <div className="text-[var(--blue-700)] text-2xl mb-1" aria-hidden>
+                      {f.icon}
+                    </div>
+                    <h3 className="font-semibold text-blue-900 leading-snug">
+                      {f.title}
+                    </h3>
+                    <p className="text-sm text-blue-900/80 mt-1">
+                      {f.text}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <motion.div
-          className="relative h-72 md:h-96 rounded-2xl overflow-hidden shadow-xl"
-          whileHover={{ scale: 1.04 }}
-          transition={{ duration: 0.4 }}
+          className="relative h-72 md:h-[26rem] rounded-2xl overflow-hidden shadow-xl border border-blue-100"
+          whileHover={reduce ? {} : { scale: 1.02 }}
+          transition={{ duration: 0.3 }}
         >
           <Image
             src="/images/individual-page.jpeg"
-            alt="Urna personalizada para mascotas"
+            alt="Urna y detalles del servicio individual"
             fill
+            sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
         </motion.div>
       </motion.section>
 
-      {/* Prices */}
       <motion.section
         className="max-w-4xl mx-auto px-6 mt-16"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.25 }}
         variants={fadeInUp}
       >
-        <h3 className="text-2xl font-semibold mb-6 text-[var(--blue-700)]">Precios por peso</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {prices.map(({ weight, price }) => (
+        <h3 className="text-2xl font-semibold mb-8 text-[var(--blue-700)] relative inline-block">
+          Precios por peso
+          <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-[var(--blue-500)] to-[var(--blue-300)] rounded-full" />
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+          {PRICES.map(({ weight, price }) => (
             <div
               key={weight}
-              className="flex justify-between items-center p-6 bg-white rounded-2xl 
-                         border-l-4 border-[var(--blue-500)] shadow-md hover:shadow-xl 
-                         hover:-translate-y-1 transition-all"
+              className="flex justify-between items-center p-5 md:p-6 bg-white rounded-2xl border border-blue-100 shadow-sm hover:shadow-md hover:border-blue-300 transition-all relative overflow-hidden"
             >
-              <span>{weight}</span>
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[var(--blue-500)] to-[var(--blue-300)]" />
+              <span className="text-blue-900/90">{weight}</span>
               <span className="font-bold text-[var(--blue-700)]">{price}</span>
             </div>
           ))}
         </div>
-        <p className="mt-4 text-sm text-[var(--text-muted)]">
-          * Todos los precios incluyen IVA. Consulta condiciones según zona y disponibilidad.
+        <p className="mt-4 text-sm text-gray-600">
+          * Precios con IVA. Confirmamos el presupuesto exacto por WhatsApp o teléfono según zona.
         </p>
       </motion.section>
 
-      {/* Extras */}
       <motion.section
-        className="mt-20 bg-gradient-to-br from-[var(--blue-100)] via-[var(--blue-50)] to-white py-16 relative"
+        className="mt-16 md:mt-20 bg-gradient-to-br from-[var(--blue-100)] via-[var(--blue-50)] to-white py-14 relative"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.25 }}
         variants={fadeInUp}
       >
         <div className="absolute inset-0 bg-[url('/images/noise.jpg')] opacity-10" />
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <h3 className="text-2xl font-semibold mb-4 text-[var(--blue-700)]">Servicios Extra</h3>
-          <p className="mb-6 opacity-90">Añade toques personales o mayor comodidad con nuestros servicios adicionales:</p>
-          <ul className="inline-block text-left list-inside list-disc space-y-2 opacity-90">
-            {extras.map((item, i) => (
-              <li key={i}>{item}</li>
+          <h3 className="text-2xl font-semibold mb-4 text-[var(--blue-700)]">Servicios extra</h3>
+          <p className="mb-6 text-blue-900/85">Añade toques personales o mayor comodidad:</p>
+          <ul className="inline-block text-left list-disc list-inside space-y-2 text-blue-900/85 marker:text-[var(--blue-500)]">
+            {EXTRAS.map((item) => (
+              <li key={item}>{item}</li>
             ))}
           </ul>
         </div>
       </motion.section>
 
-      {/* CTA */}
       <motion.section
-        className="py-20 text-center"
+        className="py-16 md:py-20 text-center"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.25 }}
         variants={fadeInUp}
       >
-        <div className="mx-auto max-w-md">
-          <hr className="border-t-4 border-[var(--blue-500)] w-20 mx-auto mb-6 rounded-full" />
-          <p className="mb-6 text-lg font-medium">
-            Solicita hoy este servicio único y rinde homenaje con la dedicación que tu mascota merece.
+        <div className="mx-auto max-w-xl">
+          <hr className="border-t-4 border-[var(--blue-500)] w-16 mx-auto mb-6 rounded-full" />
+          <p className="mb-6 text-lg font-medium text-blue-900/95">
+            Solicita este servicio íntimo y rinde homenaje con la dedicación que tu mascota merece.
           </p>
-          <a
-            href="/contacto"
-            className="inline-block bg-gradient-to-r from-[var(--blue-700)] to-[var(--blue-500)] 
-                       hover:from-[var(--blue-600)] hover:to-[var(--blue-400)]
-                       text-[var(--text-light)] px-10 py-4 rounded-full font-semibold 
-                       shadow-lg hover:shadow-2xl transition-all"
-          >
-            Solicitar Servicio
-          </a>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href="/contacto"
+              className="inline-block bg-gradient-to-r from-[var(--blue-700)] to-[var(--blue-500)] hover:from-[var(--blue-600)] hover:to-[var(--blue-400)] text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-2xl transition-all"
+            >
+              Solicitar servicio
+            </a>
+            <a
+              href="/calculadora"
+              className="inline-block border-2 border-[var(--blue-700)] text-[var(--blue-700)] hover:bg-[var(--blue-700)] hover:text-white px-8 py-4 rounded-full font-semibold transition-colors"
+            >
+              Calcular precio
+            </a>
+          </div>
         </div>
       </motion.section>
+
+      <Script id="ld-individual" type="application/ld+json">
+        {JSON.stringify(jsonLd)}
+      </Script>
     </main>
   );
 }

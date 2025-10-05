@@ -29,8 +29,7 @@ export default function Footer() {
     });
   };
 
-
-    const handlePhoneClick = (source: string, phoneE164: string, display: string) => {
+  const handlePhoneClick = (source: string, phoneE164: string, display: string) => {
     trackEvent("phone_click", {
       source,
       phone: phoneE164,
@@ -49,43 +48,47 @@ export default function Footer() {
 
   return (
     <footer
-      className="relative text-[var(--text-light)]"
+      className="relative bg-[#F7FAFF] text-blue-900"
       aria-labelledby="footer-title"
     >
-    <div className="absolute inset-0 bg-gradient-to-br from-[var(--blue-800)] via-[var(--blue-700)] to-[var(--blue-800)]" />
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
 
-
-
-      <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-10 grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div className="relative max-w-7xl mx-auto px-6 pt-14 pb-10 grid grid-cols-1 md:grid-cols-4 gap-10">
         <div>
           <h3 id="footer-title" className="text-lg font-bold mb-2">
             Luz Animal S.L.
           </h3>
-          <p className="text-xs mb-1 opacity-80">N.I.F.: B10540581</p>
-          <p className="text-xs opacity-80">
+          <p className="text-xs mb-1 text-blue-700/80">N.I.F.: B10540581</p>
+          <p className="text-xs text-blue-700/80">
             Pompas fúnebres y actividades relacionadas
           </p>
         </div>
 
         <div>
           <h4 className="text-lg font-bold mb-2">Ubicación</h4>
-          <p className="flex items-start gap-2 text-sm opacity-90">
-            <FaMapMarkerAlt className="mt-0.5 text-[var(--blue-300)]" />
-            {ADDRESS_TEXT}
-          </p>
-          <div className="flex flex-wrap gap-3 text-[var(--blue-200)] text-sm mt-2">
+          <address className="not-italic">
+            <p className="flex items-start gap-2 text-sm text-blue-800">
+              <FaMapMarkerAlt className="mt-0.5 text-blue-500" aria-hidden />
+              {ADDRESS_TEXT}
+            </p>
+          </address>
+          <div className="flex flex-wrap gap-3 text-sm mt-2">
             <Link
               href="https://maps.apple.com/?address=Carrer%20de%20Severo%20Ochoa,%2043,%2008403%20Granollers,%20Barcelona"
               target="_blank"
-              className="underline hover:text-[var(--blue-100)]"
+              rel="noopener noreferrer"
+              className="underline decoration-blue-300 underline-offset-4 hover:decoration-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+              aria-label="Abrir ubicación en Apple Maps"
             >
               Apple Maps
             </Link>
-            <span>/</span>
+            <span className="text-blue-400">/</span>
             <Link
               href="https://maps.google.com/?q=Carrer+de+Severo+Ochoa,+43,+08403+Granollers,+Barcelona"
               target="_blank"
-              className="underline hover:text-[var(--blue-100)]"
+              rel="noopener noreferrer"
+              className="underline decoration-blue-300 underline-offset-4 hover:decoration-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+              aria-label="Abrir ubicación en Google Maps"
             >
               Google Maps
             </Link>
@@ -94,58 +97,66 @@ export default function Footer() {
 
         <div>
           <h4 className="text-lg font-bold mb-2">Contacto</h4>
-          <ul className="space-y-2 text-sm opacity-90 mb-4">
+          <ul className="space-y-2 text-sm">
             <li className="flex items-center gap-2">
-              <FaWhatsapp className="text-green-400 w-5 h-5" />
+              <FaWhatsapp className="text-green-600 w-5 h-5" aria-hidden />
               <Link
                 href={`https://wa.me/${PHONE_MAIN_E164}`}
                 target="_blank"
-                className="hover:text-[var(--blue-100)]"
+                rel="noopener noreferrer"
+                className="hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
                 onClick={() => handleWhatsAppClick("Footer - WhatsApp")}
+                aria-label={`Contactar por WhatsApp al ${PHONE_MAIN_DISPLAY}`}
               >
                 {PHONE_MAIN_DISPLAY}
               </Link>
             </li>
             <li className="flex items-center gap-2">
-              <FaPhoneAlt className="w-5 h-5 text-[var(--blue-300)]" />
+              <FaPhoneAlt className="w-5 h-5 text-blue-600" aria-hidden />
               <a
                 href={`tel:+${PHONE_MAIN_E164}`}
                 onClick={() => handlePhoneClick("Footer - Mobile", PHONE_MAIN_E164, PHONE_MAIN_DISPLAY)}
+                className="hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+                aria-label={`Llamar al móvil ${PHONE_MAIN_DISPLAY}`}
               >
                 {PHONE_MAIN_DISPLAY}
               </a>
             </li>
             <li className="flex items-center gap-2">
-                <FaPhoneAlt className="w-5 h-5 text-[var(--blue-300)]" />
-                <a
-                  href={`tel:+${PHONE_LANDLINE_E164}`}
-                  onClick={() =>
-                    handlePhoneClick("Footer - Landline", PHONE_LANDLINE_E164, PHONE_LANDLINE)
-                  }
-                >
-                  {PHONE_LANDLINE}
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <FaEnvelope className="w-5 h-5 text-[var(--blue-300)]" />
-                <Link
-                  href={`mailto:${EMAIL}`}
-                  onClick={() => handleEmailClick("Footer - Email", EMAIL)}
-                >
-                  {EMAIL}
-                </Link>
-              </li>
+              <FaPhoneAlt className="w-5 h-5 text-blue-600" aria-hidden />
+              <a
+                href={`tel:+${PHONE_LANDLINE_E164}`}
+                onClick={() => handlePhoneClick("Footer - Landline", PHONE_LANDLINE_E164, PHONE_LANDLINE)}
+                className="hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+                aria-label={`Llamar al fijo ${PHONE_LANDLINE}`}
+              >
+                {PHONE_LANDLINE}
+              </a>
+            </li>
+            <li className="flex items-center gap-2">
+              <FaEnvelope className="w-5 h-5 text-blue-600" aria-hidden />
+              <Link
+                href={`mailto:${EMAIL}`}
+                onClick={() => handleEmailClick("Footer - Email", EMAIL)}
+                className="hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+                aria-label={`Enviar email a ${EMAIL}`}
+              >
+                {EMAIL}
+              </Link>
+            </li>
           </ul>
         </div>
 
         <div>
           <h4 className="text-lg font-bold mb-2">Horario</h4>
-          <p className="text-sm opacity-90">Atención 24/7</p>
+          <p className="text-sm text-blue-800">Atención 24/7</p>
+          <div className="mt-4 flex items-center gap-3">
+          </div>
         </div>
       </div>
 
-      <div className="relative border-t border-[var(--blue-500)]/60">
-        <div className="max-w-7xl mx-auto px-6 py-4 text-xs text-[var(--blue-100)] text-center">
+      <div className="relative border-t border-blue-200 bg-white/70">
+        <div className="max-w-7xl mx-auto px-6 py-4 text-xs text-blue-700 text-center">
           © {new Date().getFullYear()} Luz Animal — Cremación de Mascotas Barcelona. Todos los derechos reservados.
         </div>
       </div>

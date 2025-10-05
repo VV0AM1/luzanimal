@@ -29,7 +29,6 @@ export default function CalculadoraPage() {
 
   const selectedService = services[serviceIndex];
 
-  // basePrice from your data e.g. [["Hasta 3 kg","230 €"], ...]
   const basePrice = useMemo(() => {
     const raw = selectedService.prices[weightOption][1];
     return parseInt(raw.replace(/[^\d]/g, ""), 10);
@@ -52,13 +51,11 @@ export default function CalculadoraPage() {
       aria-labelledby="calc-title"
       className="relative py-24 px-6 md:px-12 overflow-hidden"
     >
-      {/* Textured background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0e1c42] via-[#193379] to-[#2a4fa3]" />
       <div className="pointer-events-none absolute inset-0 bg-[url('/images/noise.jpg')] bg-repeat opacity-[0.07] mix-blend-overlay" />
       <div className="pointer-events-none absolute -top-24 -left-24 w-80 h-80 rounded-full bg-[var(--blue-500)]/30 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-20 -right-16 w-64 h-64 rounded-full bg-white/10 blur-2xl" />
 
-      {/* Header */}
       <div className="relative z-10 max-w-3xl mx-auto text-center mb-12">
         <h1
           id="calc-title"
@@ -74,7 +71,6 @@ export default function CalculadoraPage() {
         </p>
       </div>
 
-      {/* Card */}
       <motion.div
         className="relative z-10 bg-white/90 backdrop-blur rounded-3xl shadow-[0_18px_50px_-20px_rgba(0,0,0,0.45)] border border-white/70 max-w-3xl mx-auto"
         initial={{ opacity: 0, y: 36 }}
@@ -82,7 +78,6 @@ export default function CalculadoraPage() {
         transition={{ duration: 0.55 }}
       >
         <div className="grid grid-cols-1 gap-8 p-8 md:p-10">
-          {/* Service */}
           <div>
             <label
               htmlFor="service"
@@ -124,7 +119,6 @@ export default function CalculadoraPage() {
             )}
           </div>
 
-          {/* Weight */}
           <div>
             <label
               htmlFor="weight"
@@ -157,7 +151,6 @@ export default function CalculadoraPage() {
             </div>
           </div>
 
-          {/* Extras – only two, as requested */}
           <div>
             <span className="block text-sm font-semibold text-[var(--blue-700)] mb-2">
               Extras opcionales
@@ -197,7 +190,6 @@ export default function CalculadoraPage() {
             </ul>
           </div>
 
-          {/* Breakdown */}
           <div
             className="rounded-2xl bg-white/80 border border-white/70 shadow-inner p-6"
             aria-live="polite"
@@ -258,7 +250,6 @@ export default function CalculadoraPage() {
             </div>
           </div>
 
-          {/* CTA */}
           <a
             href="https://wa.me/34684416567"
             target="_blank"
@@ -284,7 +275,6 @@ export default function CalculadoraPage() {
         </div>
       </motion.div>
 
-      {/* SEO helper text (visible, concise, keyword-friendly) */}
       <div className="relative z-10 max-w-3xl mx-auto text-center mt-8">
         <p className="text-blue-100/90 text-sm leading-relaxed">
           Calculadora para <strong>cremación de mascotas en Barcelona</strong> — modalidades

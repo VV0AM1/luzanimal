@@ -1,31 +1,19 @@
-export async function GET() {
+import type { MetadataRoute } from "next";
+
+export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://www.luzanimal.com";
-  const urls = [
-    { path: "/",                             changefreq: "daily",  priority: 1.0 },
-    { path: "/servicios",                    changefreq: "weekly", priority: 0.9 },
-    { path: "/contacto",                     changefreq: "monthly",priority: 0.8 },
-    { path: "/quien-somos",                  changefreq: "monthly",priority: 0.6 },
-    { path: "/faq",                          changefreq: "monthly",priority: 0.6 },
-    { path: "/servicios/incineracion-colectiva",   changefreq: "monthly", priority: 0.8 },
-    { path: "/servicios/incineracion-individual",  changefreq: "monthly", priority: 0.9 },
-    { path: "/servicios/incineracion-presencial",  changefreq: "monthly", priority: 0.8 },
-    { path: "/calculadora",                  changefreq: "monthly",priority: 0.5 },
+  const now = new Date();
+
+  const urls: MetadataRoute.Sitemap = [
+    { url: `${base}/`,                    changeFrequency: "daily",   priority: 1.0,  lastModified: now },
+    { url: `${base}/servicios`,           changeFrequency: "weekly",  priority: 0.9,  lastModified: now },
+    { url: `${base}/contacto`,            changeFrequency: "monthly", priority: 0.8,  lastModified: now },
+    { url: `${base}/quien-somos`,         changeFrequency: "monthly", priority: 0.6,  lastModified: now },
+    { url: `${base}/faq`,                 changeFrequency: "monthly", priority: 0.6,  lastModified: now },
+    { url: `${base}/servicios/incineracion-colectiva`,  changeFrequency: "monthly", priority: 0.8, lastModified: now },
+    { url: `${base}/servicios/incineracion-individual`, changeFrequency: "monthly", priority: 0.9, lastModified: now },
+    { url: `${base}/servicios/incineracion-presencial`, changeFrequency: "monthly", priority: 0.8, lastModified: now },
+    { url: `${base}/calculadora`,         changeFrequency: "monthly", priority: 0.5,  lastModified: now },
   ];
-
-  const now = new Date().toISOString();
-
-  const body = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `
-  <url>
-    <loc>${base}${u.path}</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>${u.changefreq}</changefreq>
-    <priority>${u.priority.toFixed(1)}</priority>
-  </url>`).join("")}
-</urlset>`.trim();
-
-  return new Response(body, {
-    headers: { "Content-Type": "application/xml", "Cache-Control": "s-maxage=3600" },
-  });
+  return urls;
 }

@@ -78,3 +78,4 @@ option {
   -ms-overflow-style: none;  /* IE & Edge */
   scrollbar-width: none;     /* Firefox */
 }
+.break-words { overflow-wrap: anywhere; word-break: break-word; }
