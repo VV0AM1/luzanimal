@@ -5,10 +5,10 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: ["/", "/favicon.ico", "/favicon.png"],
-        disallow: ["/api/", "/_next/", "/static/", "/private/"]
-      }
+        allow: "/",
+        disallow: ["/api/", "/_next/", "/static/", "/private/"],
+      },
     ],
-    sitemap: "https://www.luzanimal.com/sitemap.xml"
+    sitemap: "https://www.luzanimal.com/sitemap.xml",
   };
 }
