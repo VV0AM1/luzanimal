@@ -60,7 +60,6 @@ export default function ContactoSection() {
 
   return (
     <main className="bg-[var(--blue-50)] text-[var(--text-main)] pb-20">
-      {/* HERO */}
       <motion.section
         className="relative h-[70vh] flex items-center justify-center 
         bg-[url('/images/contacto-header.jpg')] bg-cover bg-center
@@ -91,16 +90,13 @@ export default function ContactoSection() {
         </div>
       </motion.section>
 
-      {/* TWO-COLUMN LAYOUT */}
       <motion.section
         className="max-w-6xl mx-auto mt-16 px-6 sm:px-8 grid grid-cols-1 md:grid-cols-2 gap-12"
         initial="hidden"
         animate="visible"
         variants={fadeInUp}
       >
-        {/* LEFT COLUMN — FORM (shorter) + ADDRESS */}
         <div className="flex flex-col gap-8">
-          {/* Form card — shorter (removed fixed heights) */}
           <div className="relative bg-white rounded-3xl p-8 shadow-2xl">
             <div className="absolute -top-6 -left-6 w-24 h-24 bg-[var(--blue-300)] opacity-20 rounded-full pointer-events-none" />
             <h2 className="text-3xl font-bold text-[var(--blue-700)] mb-6">
@@ -176,7 +172,6 @@ export default function ContactoSection() {
             </form>
           </div>
 
-          {/* Address card — moved UNDER the form (same column) */}
           <motion.div
             className="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all"
             whileHover={{ translateY: -4 }}
@@ -211,7 +206,6 @@ export default function ContactoSection() {
           </motion.div>
         </div>
 
-        {/* RIGHT COLUMN — Contact methods + map */}
         <div className="space-y-8">
           <h2 className="text-3xl font-bold text-[var(--blue-700)]">
             Contacto Directo
@@ -222,7 +216,6 @@ export default function ContactoSection() {
           </p>
 
           <div className="grid grid-cols-1 gap-6">
-            {/* WhatsApp */}
             <motion.div
               className="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all"
               whileHover={{ translateY: -4 }}
@@ -243,12 +236,11 @@ export default function ContactoSection() {
                     })
                   }
                 >
-                  +34 684 418 499
+                  +34 684 416 567
                 </a>
               </div>
             </motion.div>
 
-            {/* Phone */}
             <motion.div
               className="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all"
               whileHover={{ translateY: -4 }}
@@ -289,7 +281,6 @@ export default function ContactoSection() {
               </div>
             </motion.div>
 
-            {/* Email */}
             <motion.div
               className="flex items-start gap-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all"
               whileHover={{ translateY: -4 }}
@@ -307,7 +298,6 @@ export default function ContactoSection() {
             </motion.div>
           </div>
 
-          {/* Map */}
           <motion.div
             className="relative z-20 w-full h-64 rounded-3xl overflow-hidden shadow-lg"
             initial="hidden"
