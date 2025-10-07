@@ -180,13 +180,13 @@ export default function ContactoSection() {
             <div>
               <h3 className="font-semibold mb-1">Dirección</h3>
               <address className="not-italic leading-relaxed">
-                Carrer de Severo Ochoa, 43
+                Carrer de Severo Ochoa, 46
                 <br />
                 Granollers, Barcelona
               </address>
               <div className="mt-2 flex gap-4 text-sm">
                 <a
-                  href="https://maps.apple.com/?address=Carrer%20de%20Severo%20Ochoa,43,Granollers"
+                  href="https://maps.apple.com/?address=Carrer%20de%20Severo%20Ochoa,46,Granollers"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1 text-[var(--blue-700)] hover:underline"
@@ -194,7 +194,7 @@ export default function ContactoSection() {
                   <FaApple /> Apple Maps
                 </a>
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Carrer+de+Severo+Ochoa,+43,+Granollers"
+                  href="https://www.google.com/maps/search/?api=1&query=Carrer+de+Severo+Ochoa,+46,+Granollers"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-1 text-[var(--blue-700)] hover:underline"
@@ -292,7 +292,7 @@ export default function ContactoSection() {
                   href="mailto:luzanimalbcn@gmail.com"
                   className="text-[var(--blue-700)] hover:underline"
                 >
-                  luzanimalbcn@gmail.com
+                  info@almascotas.com
                 </a>
               </div>
             </motion.div>
@@ -305,7 +305,7 @@ export default function ContactoSection() {
             variants={fadeInUp}
           >
             <iframe
-              src="https://maps.google.com/maps?q=Carrer%20de%20Severo%20Ochoa%2C%2043%2C%20Granollers&output=embed"
+              src="https://maps.google.com/maps?q=Carrer%20de%20Severo%20Ochoa%2C%2046%2C%20Granollers&output=embed"
               className="w-full h-full border-0"
               allowFullScreen
               loading="lazy"

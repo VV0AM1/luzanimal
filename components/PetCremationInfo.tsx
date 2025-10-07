@@ -135,7 +135,7 @@ export default function PetCrematoriumInfo() {
             <address className="not-italic text-blue-50 space-y-2">
               <div className="flex items-center gap-2">
                 <FaMapMarkerAlt className="w-4 h-4 text-blue-200" aria-hidden />
-                <span>Carrer de Severo Ochoa, 43 · 08403 Granollers, Barcelona</span>
+                <span>Carrer de Severo Ochoa, 46 · 08403 Granollers, Barcelona</span>
               </div>
               <div className="flex items-center gap-2">
                 <FaPhoneAlt className="w-4 h-4 text-blue-200" aria-hidden />
@@ -155,7 +155,7 @@ export default function PetCrematoriumInfo() {
 
             <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
               <a
-                href="https://maps.apple.com/?address=Carrer%20de%20Severo%20Ochoa,%2043,%20Granollers"
+                href="https://maps.apple.com/?address=Carrer%20de%20Severo%20Ochoa,%2046,%20Granollers"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => onMapClick("apple")}
@@ -166,7 +166,7 @@ export default function PetCrematoriumInfo() {
                 <FaApple aria-hidden /> Apple Maps
               </a>
               <a
-                href="https://maps.google.com/?q=Carrer+de+Severo+Ochoa,+43,+Granollers"
+                href="https://maps.google.com/?q=Carrer+de+Severo+Ochoa,+46,+Granollers"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => onMapClick("google")}

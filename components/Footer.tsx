@@ -18,8 +18,8 @@ export default function Footer() {
   const PHONE_MAIN_E164 = "34684416567";
   const PHONE_LANDLINE = "+34 935 851 040";
   const PHONE_LANDLINE_E164 = "34935851040";
-  const EMAIL = "luzanimalbcn@gmail.com";
-  const ADDRESS_TEXT = "Carrer de Severo Ochoa, 43 · 08403 Granollers, Barcelona";
+  const EMAIL = "info@almascotas.com";
+  const ADDRESS_TEXT = "Carrer de Severo Ochoa, 46 · 08403 Granollers, Barcelona";
 
   const handleWhatsAppClick = (source: string) => {
     trackEvent("whatsapp_click", {
@@ -56,7 +56,7 @@ export default function Footer() {
       <div className="relative max-w-7xl mx-auto px-6 pt-14 pb-10 grid grid-cols-1 md:grid-cols-4 gap-10">
         <div>
           <h3 id="footer-title" className="text-lg font-bold mb-2">
-            Luz Animal S.L.
+            Almascotas S.L.
           </h3>
           <p className="text-xs mb-1 text-blue-700/80">N.I.F.: B10540581</p>
           <p className="text-xs text-blue-700/80">
@@ -74,7 +74,7 @@ export default function Footer() {
           </address>
           <div className="flex flex-wrap gap-3 text-sm mt-2">
             <Link
-              href="https://maps.apple.com/?address=Carrer%20de%20Severo%20Ochoa,%2043,%2008403%20Granollers,%20Barcelona"
+              href="https://maps.apple.com/?address=Carrer%20de%20Severo%20Ochoa,%2046,%2008403%20Granollers,%20Barcelona"
               target="_blank"
               rel="noopener noreferrer"
               className="underline decoration-blue-300 underline-offset-4 hover:decoration-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
@@ -84,7 +84,7 @@ export default function Footer() {
             </Link>
             <span className="text-blue-400">/</span>
             <Link
-              href="https://maps.google.com/?q=Carrer+de+Severo+Ochoa,+43,+08403+Granollers,+Barcelona"
+              href="https://maps.google.com/?q=Carrer+de+Severo+Ochoa,+44,+08403+Granollers,+Barcelona"
               target="_blank"
               rel="noopener noreferrer"
               className="underline decoration-blue-300 underline-offset-4 hover:decoration-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
