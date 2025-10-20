@@ -48,7 +48,7 @@ export default function InicioPortfolio(){
           </Link>
 
           <a
-            href="https://github.com/TU_USUARIO/luz-animal" 
+            href="https://github.com/VV0AM1/luzanimal" 
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 
