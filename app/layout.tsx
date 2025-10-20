@@ -7,7 +7,7 @@ import CookieConsent from "@/components/CookieConsent";
 import FloatingCalculatorButton from "@/components/FloatingCalculatorButton";
 import { TrackingProvider } from "@/app/context/TrackingContext";
 import { Poppins } from "next/font/google";
-
+import InicioPortfolio from "@/components/InicioPortfolio";
 const SITE_URL = "https://www.luzanimal.com";
 
 const poppins = Poppins({
@@ -82,6 +82,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <main>
             {children}
+            <InicioPortfolio />
             <FloatingCalculatorButton />
             <WhatsAppButton />
           </main>
